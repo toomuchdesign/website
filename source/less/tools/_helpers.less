@@ -1,0 +1,64 @@
+//******************************************************************
+//Site Name: 
+//Author: Andrea Carraro (andreacarraro.it)
+/*
+/*Stylesheet: Helpers
+/*******************************************************************/
+
+/* Clearings (use: &:extend(.clear all); )
+ * Containing floats: nicolasgallagher.com/micro-clearfix-hack/
+----------------------------------------------- */
+.clear:before,
+.clear:after {
+	content: '';
+	display: table;
+}
+
+.clear:after {
+	clear: both;
+}
+
+
+/* Device size visibility
+----------------------------------------------- */
+@media only screen and (max-width: @bp-two-columns-size) {
+	
+	.mobile-hidden {
+		display: none !important;
+	}
+}
+
+@media @bp-two-columns {
+
+	.mobile-only {
+		display: none !important;
+	}
+}
+
+
+/* Visually hidden
+----------------------------------------------- */
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+/* Hidden
+----------------------------------------------- */
+.hidden {
+    display: none;
+}
+
+
+/* Text alignment
+----------------------------------------------- */
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }

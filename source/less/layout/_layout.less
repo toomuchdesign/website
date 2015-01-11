@@ -1,0 +1,76 @@
+//******************************************************************
+//Site Name: 
+//Author: Andrea Carraro (andreacarraro.it)
+/*
+/*Stylesheet: Layout
+/*******************************************************************/
+
+.l-page {
+    min-width: @page-min-width;
+    max-width: @page-max-width;
+    margin: 0 auto;
+}
+
+.l-page-wrapper {
+	@media @bp-two-columns {
+		margin-left: @header-width--large;
+	}
+}
+
+.l-header {
+	height: @header-heigth--small;
+	//padding: (@header-heigth--small - @header-elements-height--small)/2 @global-gutter;
+	padding: 0 @global-gutter;
+	border-bottom: 1px solid @global-border;
+	text-align: center;
+
+	@media @bp-two-columns {
+		position: fixed;
+		top: 0;
+		height: 100%;
+		width: @header-width--large;
+		margin-left: -@header-width--large;
+		
+		padding-top: @global-gutter--large;
+		border-bottom: none;
+	}
+}
+
+.l-header-content {
+	
+	//@TODO: replace with offcanvas menu logic
+	@media only screen and (max-width @bp-two-columns-size) {
+		width: @off-canvas-menu-width;
+		position: fixed;
+		top: 0;
+		right: 0;
+	}
+
+	@media @bp-two-columns {
+		width: auto;
+	}
+}
+
+.l-content {
+
+	padding: @global-gutter;
+	width: 100%;
+	
+	@media @bp-two-columns {
+		float: left;
+		padding: @global-gutter--large;
+		border-left: 1px solid @global-border;
+	}
+}
+
+.l-content-section {
+	margin-top: @global-gutter--large;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.l-footer {
+	padding: @global-gutter;
+}

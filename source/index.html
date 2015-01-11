@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Andrea Carraro | web developer</title>
+        <meta name="description" content="Andrea Carraro, web Developer.">
+        <meta name="author" content="Andrea Carraro">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+
+        <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+        <![endif]-->
+
+    </head>
+    <body>
+
+        <div id="page" class="l-page">
+            <div class="l-page-wrapper">
+
+                <!--[if lt IE 7]>
+                    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                <![endif]-->
+
+                <header class="l-header" id="header">
+                
+                    <div class="site-branding">
+                
+                        <div class="site-branding__logo">
+                            <a href="#"><img class="site-branding__logo mobile-hidden" src="img/logo_large.svg" alt="Andrea Carraro">
+                                <img class="site-branding__logo mobile-only" src="img/logo.svg" alt="Andrea Carraro">
+                            </a>
+                        </div>
+                
+                    </div>
+
+                    <button id="menu-toggle" class="menu-toggle mobile-only" type="button">
+                            <span class="screen-reader-text">Primary Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                    </button>
+                
+                    <div class="l-header-content">
+                
+                        <div class="header-info">
+                            Andrea Carraro.</br>
+                            Web developer.
+                        </div>
+                
+                        <nav class="primary-navigation" role="navigation">
+                            <ul>                    
+                                <li><a href="#works">Works</a></li>
+                                <li><a href="#contacts">Contacts</a></li>
+                                <li><a href="#about">About</a></li>
+                            </ul>
+                        </nav>
+                        
+                        <nav class="social-navigation" role="navigation">
+                            <ul>                    
+                                <li><a href="https://twitter.com/toomuchdesign" target="_blank"><span class="icon icon-twitter"></span>Twitter</a></li>
+                                <li><a href="https://github.com/toomuchdesign" target="_blank"><span class="icon icon-github"></span>GitHub</a></li>
+                                <li><span class="icon icon-mail"></span>hi(at)andreacarraro.it</li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                </header><!-- .l-header -->
+                
+                <div class="l-content" id="content">
+
+                    <section class="l-content-section" id="intro">
+                        <h1>Hi, I'm Andrea Carraro</h1>
+                        
+                    </section>
+
+                    <section class="l-content-section" id="works">
+                        <h1>Works</h1>
+
+                        <div class="work">
+                            <h2 class="work__title">Lorem ipsum</h3>
+                            <div class="work__years">2009-2012</div>
+
+                            <ul class="work__info">
+                                <li>Logo, website, UX design, HTML / CSS / JavaScript development</li>
+                                <li>Agency: <a href="#" target="_blank">AgencyName</a></li>
+                                <li><a href="#" target="_blank">Visit website</a></li>
+                            </ul>
+
+                            <div class="work__thumbnail">
+                                <!-- <img src="img/snapshots/snapshot.jpg" alt="Lorem ipsum"> -->
+                                <img src="http://placehold.it/700x300" alt="Lorem ipsum">
+                                
+                            </div>
+                        </div> <!-- .work -->
+                        
+                    </section>
+
+                    <section class="l-content-section" id="contacts">
+                        <h1>Contacts</h1>
+                        <p>Learning new things makes me happy.</br>
+                            Feel free to contact me for talking about your project.</p>
+
+                        <form id="contact-form" class="form contact-form" action="scripts/contactmail.php" method="post">
+                            <div class="contact-form__element contact-form__element--small">
+                                <label for="name" class="visuallyhidden">Name</label>
+                                <span class="contact-form__error"></span>
+                                <input type="text" value="" class="text" id="name" name="name" maxlength="50" placeholder="Name">
+                            </div>
+                            <div class="contact-form__element contact-form__element--small">
+                                <label for="mail" class="hidden">mail</label>
+                                <input type="text" value="" class="text hidden" id="mail" name="mail" maxlength="50">
+                                
+                                <label for="email" class="visuallyhidden">Email</label>
+                                <span class="contact-form__error"></span>
+                                <input type="text" value="" class="text" id="email" name="email" maxlength="50" placeholder="E-mail">
+                            </div>
+                            <div class="contact-form__element">
+                                <label for="message" class="visuallyhidden">Message</label>
+                                <span class="contact-form__error"></span>
+                                <textarea class="text textarea" id="message" name="message" placeholder="Your message"></textarea>
+                            </div>
+                            <div class="contact-form__element">
+                                <p class="contact-form__alert" id="contact-form__alert"></p>
+                                <div class="contact-form__loading"></div>
+                                <input type="submit" class="contact-form__button button button--primary" id="submit" value="Send!">
+                            </div>
+                            <input type="hidden" value="7" id="human" name="human">
+                        </form>
+                        
+                    </section>
+
+                    <section class="l-content-section" id="about">
+                        <h1>About</h1>
+
+                        <div class="id">
+                            <img class="id__face" src="img/me.png" alt="">
+                            <a href="files/AndreaCarraro_cv.pdf" class="button id__button">Download my CV</a>
+                        </div>
+
+                        <p>
+                            My name is Andrea Carraro.
+                            I am a freelance specializing in making good websites & web applications.
+                        </p>
+
+                        <p>
+                            I have a 5 years experience in front-end and server-side web development as freelance for small companies, individuals, and web agencies.
+                        </p>
+
+                        <p>
+                            Actually I’m daily involved in:
+                            <ul>
+                                <li>HTML5 + JS, responsive, cross-browser/device frontend development</li>
+                                <li>JS ( vanilla/JQuery ) development</li>
+                                <li>PHP development</li>
+                                <li>WordPress, Joomla & CMS integration</li>
+                            </ul>
+                            ..and I’m willing to keep working with newer technologies.
+                        </p>
+
+                        <p>
+                            Web development evolves at terrific speed.</br>
+                            My current workflow is powered by these tools and I’m looking forward to discover the next one:
+                        </p>
+                        
+                    </section>
+
+                    <footer class="l-footer">
+                        
+                    </footer>
+
+                </div> <!-- .l-content -->
+                
+            </div> <!-- .l-page-wrapper -->
+        </div> <!-- .l-page -->
+
+        <!--
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.0.3.min.js"><\/script>')</script>
+        -->
+        <script src="js/vendor/jquery-2.1.1.min.js" type="text/javascript"></script>
+
+        <script src="js/plugins.js" type="text/javascript"></script>
+        <script src="js/main.js" type="text/javascript"></script>
+        <!--
+        <script>
+            var _gaq=[['_setAccount','UA-6621805-9'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+        -->
+    </body>
+</html>

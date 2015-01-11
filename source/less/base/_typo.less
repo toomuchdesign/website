@@ -1,0 +1,117 @@
+//******************************************************************
+//Site Name: 
+//Author: Andrea Carraro (andreacarraro.it)
+/*
+/*Stylesheet: Typography
+/*******************************************************************/
+
+/* ==========================================================================
+   Fontface
+========================================================================== */
+
+/* =Font-face: Import fonts from local folder
+ * Now disabled: It's a replacement for Google fonts
+----------------------------------------------- */
+@import (less) "vendor/fontsquirrel.less";
+
+
+/* = Import Moonico icons
+----------------------------------------------- */
+@import (less) "vendor/moonico.less";
+
+
+/* ==========================================================================
+   Typo elements
+========================================================================== */
+
+/* =Main (inuit.css)
+----------------------------------------------- */
+@main-font-size: unit((@base-font-size/16), em);
+
+html{
+    font: e(%("%d / %d", @main-font-size, @line-height-ratio)) @base-font-family;
+    color: @global-color;
+}
+
+
+/* =Headings
+----------------------------------------------- */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6,.h6 {
+    font-family: @sans-serif;
+    text-rendering: optimizelegibility;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 0;
+    color: @neuter-color;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+h1, .h1{
+    .font-size(@h1-size);
+}
+
+h2, .h2{
+    .font-size(@h2-size);
+}
+
+h3, .h3{
+    .font-size(@h3-size);
+}
+
+h4, .h4{
+    .font-size(@h4-size);
+}
+
+h5, .h5{
+    .font-size(@h5-size);
+}
+
+h6, .h6{
+    .font-size(@h6-size);
+}
+
+
+/* =Text
+----------------------------------------------- */
+p {
+    margin: 0 0 10px;
+    text-align: justify;
+  
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    color: @global-link-color;
+    transition: color .15s ease, background-color .15s ease;
+
+    &:hover {
+        color: @global-link-hover-color;
+    }
+}
+
+
+.milli{
+    .font-size(@milli-size);
+}
+.micro{
+    .font-size(@micro-size);
+}
+
+
+
+/* =Lists style reset
+----------------------------------------------- */
+ul {
+    margin: 15px 0;
+    padding-left: 40px;
+
+    li {
+        list-style: disc outside none;
+    }
+}

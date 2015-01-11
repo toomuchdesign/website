@@ -1,0 +1,133 @@
+ /* =Buttons
+ /* https://github.com/suitcss/components-button
+ /* https://github.com/dhg/Skeleton/
+ ----------------------------------------------- */
+ /*
+    * A mad mix of Suitcss and Skeleton button component 
+    *
+    * Markup:
+    * <a href="#" class="button"></a>
+    * <a href="#" class="button button--primary"></a>
+    *
+    */
+
+//Default buttons
+@button-bg-color:                               @neuter-color--light;
+@button-border-color:                           @neuter-color--light;
+@button-color:                                  lighten(@button-bg-color, 35%);
+@button-border-width:                           0;
+
+@button-border-color--hover:                    @neuter-color--light;
+@button-color--hover:                           @button-color;
+@button-bg-color--hover:                        lighten(@button-bg-color, 10%);
+
+@button-disabled-opacity:                       0.6;
+@button-font:                                   inherit;
+@button-padding:                                0.4em 0.75em;
+
+//Primary buttons
+@button-color--primary:                         @white;
+@button-border-color--primary:                  @action-color;
+@button-bg-color--primary:                      @action-color;
+
+@button-color--primary--focus:                  @button-color--primary;
+@button-border-color--primary--focus:           @button-border-color--primary;
+@button-bg-color--primary--focus:               mix( @button-bg-color--primary, yellow, 80%);
+
+/**
+ * The button classes are best applied to links, buttons, and submit inputs.
+ * These components can be used in forms, as calls to action, or as part of the
+ * general UI of the site/app.
+ */
+
+/**
+ * 1. Corrects inability to style clickable `input` types in iOS.
+ * 2. Normalize `box-sizing` across all elements that this component could be
+ *        applied to.
+ * 3. Inherit text color from ancestor.
+ * 4. Inherit font styles from ancestor.
+ * 5. Normalize `line-height`. For `input`, it can't be changed from `normal` in Firefox 4+.
+ * 6. Prevent button text from being selectable.
+ * 7. Make sure `input` will wrap text across multiple lines.
+ */
+
+.button,
+button {
+    -webkit-appearance: none; /* 1 */
+    background: @button-bg-color;
+    border-color: @button-border-color;
+    border-style: solid;
+    border-width: @button-border-width;
+    box-sizing: border-box; /* 2 */
+    color: @button-color; /* 3 */
+    cursor: pointer;
+    display: inline-block;
+    font: @button-font; /* 4 */
+    line-height: normal; /* 5 */
+    margin: 0;
+    padding: @button-padding;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none; /* 6 */
+    white-space: normal; /* 7 */
+
+    text-transform: uppercase;
+
+    /**
+     * UI states
+     */
+    &:hover,
+    &:focus {
+        border-color: @button-border-color--hover;
+        color: @button-color--hover;
+        background-color: @button-bg-color--hover;
+        outline: 0;
+
+        /**
+         * Work around a Firefox/IE bug where the transparent `button` background
+         * results in a loss of the default `button` focus styles.
+         */
+        //outline: 1px dotted;
+        //outline: 5px auto -webkit-focus-ring-color;
+
+    }
+
+    &:disabled,
+    &.is-disabled {
+        cursor: default;
+        opacity: @button-disabled-opacity;
+    }
+
+    /**
+     * Remove excess padding and border in Firefox 4+
+     */
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    >.icon {
+
+        &::before {
+            padding-right: 10px;
+        }
+    }
+
+}
+
+/**
+ * Modifiers
+ */
+.button--primary {
+    color: @button-color--primary;
+    border-color: @button-border-color--primary;
+    background-color: @button-bg-color--primary;
+
+    &:hover,
+    &:focus {
+        color: @button-color--primary--focus;
+        border-color: @button-border-color--primary--focus;
+        background-color: @button-bg-color--primary--focus;
+    }
+}

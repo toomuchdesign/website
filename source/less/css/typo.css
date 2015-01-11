@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('fonts/BebasNeue-webfont.eot');
+    src: url('fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BebasNeue-webfont.woff') format('woff'),
+         url('fonts/BebasNeue-webfont.ttf') format('truetype'),
+         url('fonts/BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body, p, h1, h2, h3, h4, h5, h6 { 
+	font-size: 100%;
+}
+
+body { 	
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	color: #5B5B5B;
+}
+
+p { 
+	text-align: justify;
+	padding-bottom: 9px;
+	margin: 0;
+}
+
+*::-moz-selection {
+    background: none repeat scroll 0 0 #EC7F23;
+    color: #FFFFFF;
+}
+*::selection {
+    background: none repeat scroll 0 0 #EC7F23;
+    color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6 , .heading { 
+	font-family: "BebasNeueRegular", "Arial Narrow", Tahoma, Arial, Helvetica, Sans serif;
+	color: #222;
+	text-shadow: 1px 1px #EDEDED;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin: 0;
+	line-height: 1;
+}
+
+h2  {
+    font-size: 2.4em;
+    /* line-height: 1.1em;*/
+}
+.no-fontface h2  {
+    font-size: 1.9em;
+}
+
+h3  {
+    font-size: 2em;
+    /*line-height: 1.1em;*/
+}
+
+.no-fontface h3  {
+    font-size: 1.5em;
+}
+
+h4  {
+    font-size: 1.7em;
+    /*line-height: 1.1em;*/
+}
+.no-fontface h4  {
+    font-size: 1.3em;
+}
+
+
+.heading.big { font-size: 60px; line-height: 55px; color: #EC7F23;}
+.heading.small { font-size: 25px; line-height: 28px;}
+
+.no-fontface .heading.big { font-size: 42px; line-height: 50px; font-weight: bold;}
+.no-fontface .heading.small { font-size: 20px; line-height: 20px; font-weight: bold;}
+
+a:link,
+a:visited {
+	color: #EC7F23;
+	text-decoration: underline;
+	outline: none;
+}
+a:hover {
+	color: #DCDCDC;
+	text-decoration: none;
+}
+
+ul, ol { 
+	margin: 0;
+	padding-left: 0;
+}
+
+#heading #title { 
+	width: 100%;
+	line-height: 100%;
+	font-size: 100px;
+}
+
+#heading h1  {
+	color: #222;
+	font-size: 64px;
+	line-height:64px;
+	display: block;
+	text-shadow: 1px 1px 1px #000000;
+}
+#heading h1 span.heading.small  {
+	color: #EC7F23;
+	font-size: 30px;
+	display: block;
+}
+
+.no-fontface #heading h1  {
+	color: #353535;
+	font-size: 64px;
+	line-height:64px;
+	display: block;
+	text-shadow: 1px 1px 1px #000000;
+}
+.no-fontface #heading h1 span.heading.small  {
+	font-size: 21px;
+}
+
+
+#what h2,
+#works h2,
+#contacts h2 {
+	position: absolute;
+	right: 16px;
+    top: 9px;
+	color: #fff;
+	text-shadow: 1px 1px #CB501C;
+}
+
+#works h2  {
+	text-shadow: 1px 1px #141414;
+}
+
+#bottom h3 { 
+	text-shadow: 1px 1px #141414;
+}
+
+#bottom a:link,
+#bottom a:visited {
+	color: #fff;
+}
+#bottom a:hover {
+	color: #DCDCDC;
+}
+
+@media only screen and (max-width: 767px) {
+	#heading #title { 
+		font-size: 70px;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+
+	#heading h1  {
+		font-size: 50px;
+		line-height:54px;
+	}
+	#heading h1 span.heading.small  {
+		font-size: 27px;
+		line-height: 31px;
+	}
+	#heading #title { 
+	font-size: 50px;
+	}
+	.no-fontface  #heading h1  {
+		font-size: 50px;
+		line-height:54px;
+	}
+	.no-fontface  #heading h1 span.heading.small  {
+		font-size: 17px;
+		line-height: 25px;
+	}
+}

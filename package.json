@@ -1,0 +1,20 @@
+{
+  "name": "andreacarraro.it",
+  "description": "My personal website 2015",
+  "author": "Andrea Carraro",
+  "repository": "https://github.com/toomuchdesign/website.git",
+  "homepage": "http://www.andreacarraro.it",
+  "devDependencies": {
+    "grunt": "~0.4.x",
+    "grunt-notify": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-newer": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-less": "*",
+    "grunt-autoprefixer": "*",
+    "grunt-match-media": "*"
+  },
+  "engine": "node >= 0.10"
+}

@@ -1,0 +1,36 @@
+.contact-form{
+	
+	&__element {
+		padding-top: @global-gutter--small;
+		display: block;
+		clear: both;
+	}
+
+	&__button {
+		float: right;
+	}
+
+	&__alert {
+
+	}
+
+	&__loading {
+
+	}
+}
+
+
+@media @bp-tablet {
+
+	.contact-form__element--small {
+		.c6();
+		float: left;
+		clear: none;
+		padding-right: @global-gutter--small/2;
+
+		& + .contact-form__element--small {
+			padding-right: 0;
+			padding-left: @global-gutter--small/2;
+		}
+	}
+}
