@@ -36,11 +36,28 @@
 	}
 }
 
+/*Header off canvas menu*/
+#header:target,
+#header:target + .l-content {
+	transform: translate3d(-@off-canvas-menu-width, 0, 0);
+
+	/*Swap toggle buttons*/
+	.menu-toggle--open {
+		display: none;
+	}
+
+	.menu-toggle--close {
+		display: block;
+	}
+}
+
 .l-header-content {
 	
-	//@TODO: replace with offcanvas menu logic
-	@media only screen and (max-width @bp-two-columns-size) {
+	@media only screen and (max-width: @bp-two-columns-size) {
+		
+		//Offcanvas menu logic
 		width: @off-canvas-menu-width;
+		transform: translate3d(@off-canvas-menu-width, 0, 0);
 		position: fixed;
 		top: 0;
 		right: 0;
