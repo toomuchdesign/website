@@ -5,8 +5,6 @@
     
     //Avoid accidental global variable declarations
     "use strict";
-
-    var var = '';
         
     var AC = {
         
