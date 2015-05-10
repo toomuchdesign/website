@@ -1,0 +1,41 @@
+/* =Make a nice rounded background around inline elements
+----------------------------------------------- */
+/*
+ * Inline-block element with background (eg. tags)
+ *
+ * Markup:
+ * <a href="#">  <--- .dotted-element();
+ *    .........
+ * </a>
+ *
+ */
+
+/* =Dotted element
+----------------------------------------------- */
+.dotted-element (@color: @global-color, @bg-color: @action-color) {
+
+    display: inline-block;
+    background-color: @bg-color;
+    color: @color;
+    text-decoration: none;
+    padding: 2px 10px;
+    margin: 0.5px 0;
+    border-radius: 15px;
+
+    text-transform: uppercase;
+	.font-size(@milli-size);
+}
+
+.dotted-element-color (@color: @global-color, @bg-color: @action-color) {
+
+    background-color: @bg-color;
+    color: @color;
+}
+
+.dotted-element {
+	.dotted-element( @white, @neuter-color--light );
+
+	&:hover {
+		.dotted-element-color( @white, lighten(@neuter-color--light, 10%) );
+	}
+}

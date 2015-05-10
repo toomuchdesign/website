@@ -23,6 +23,7 @@
 	padding: 0 @global-gutter;
 	border-bottom: 1px solid @global-border;
 	text-align: center;
+	transition: transform .25s ease;
 
 	@media @bp-two-columns {
 		position: fixed;
@@ -39,6 +40,7 @@
 /*Header off canvas menu*/
 #header:target,
 #header:target + .l-content {
+	border-right: 1px solid @global-border;
 	transform: translate3d(-@off-canvas-menu-width, 0, 0);
 
 	/*Swap toggle buttons*/
@@ -53,11 +55,11 @@
 
 .l-header-content {
 	
+	//Offcanvas menu logic
 	@media only screen and (max-width: @bp-two-columns-size) {
-		
-		//Offcanvas menu logic
 		width: @off-canvas-menu-width;
 		transform: translate3d(@off-canvas-menu-width, 0, 0);
+
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -72,6 +74,7 @@
 
 	padding: @global-gutter;
 	width: 100%;
+	transition: transform .25s ease;
 	
 	@media @bp-two-columns {
 		float: left;
