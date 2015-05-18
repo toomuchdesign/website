@@ -1,5 +1,6 @@
 .work{
-
+	
+	clear: both;
 	margin-bottom: @global-gutter;
 
 	&__title {
@@ -11,7 +12,7 @@
 		}
 	}
 
-	&__years {
+	&__subtitle {
 		
 		font-weight: bold;
 	}
@@ -26,11 +27,29 @@
 		}
 	}
 
-	&__link{
-		margin: 5px 0;
+	&__link {
+		margin-top: @global-gutter--small;
+	}
+
+	&__preview { 
+		&:extend(.clear all);
+
+		clear: both;
+		margin: @global-gutter--small -@global-gutter--small/2 0 -@global-gutter--small/2;
 	}
 
 	&__thumbnail {
+
 		margin-top: @global-gutter--small;
+		float: left;
+		margin: 0 1%;
+
+		&--small {
+			width: 23%;
+		}
+
+		&--large {
+			width: 73%;
+		}
 	}
 }
