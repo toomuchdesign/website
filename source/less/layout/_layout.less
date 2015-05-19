@@ -40,16 +40,30 @@
 /*Header off canvas menu*/
 #header:target,
 #header:target + .l-content {
-	border-right: 1px solid @global-border;
-	transform: translate3d(-@off-canvas-menu-width, 0, 0);
 
-	/*Swap toggle buttons*/
-	.menu-toggle--open {
-		display: none;
+	@media only screen and (max-width: @bp-two-columns-size){
+
+		border-right: 1px solid @global-border;
+		transform: translate3d(-@off-canvas-menu-width, 0, 0);
+
+		/*Swap toggle buttons*/
+		.menu-toggle--open {
+			display: none;
+		}
+
+		.menu-toggle--close {
+			display: block;
+		}
 	}
 
-	.menu-toggle--close {
-		display: block;
+}
+
+.l-header-wrapper {
+
+	@media @bp-two-columns {
+		width: 100%;
+		max-width: @off-canvas-menu-width;
+		float: right;
 	}
 }
 
