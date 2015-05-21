@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         settings: {
             source: 'source',
             build: 'build',
-            static_files_pattern: ['img/**', '!img/works', 'fonts/**', 'files/**' ],
+            static_files_pattern: ['img/**', 'fonts/**', 'files/**' ],
             thumbnails: ['img/works' ],
         },
 
@@ -19,12 +19,6 @@ module.exports = function(grunt) {
                 expand: true,                                // Enable dynamic expansion.
                 cwd: '<%= settings.build %>',                // Src matches are relative to this path.
                 src: '<%= settings.static_files_pattern %>', // Actual pattern(s) to match.
-            },
-
-            thumbnails: {
-                expand: true,
-                cwd: '<%= settings.build %>',
-                src: '<%= settings.thumbnails %>',
             },
 
             markup_files: {
@@ -81,10 +75,10 @@ module.exports = function(grunt) {
                 optimizationLevel: 3,
                 use: [mozjpeg({quality: 75})]
             },
-            thumbnails: {
+            compress_thumbnails: {
                 files: [{
                     expand: true,
-                    cwd: '<%= settings.source %>/<%= settings.thumbnails %>',
+                    cwd: '<%= settings.build %>/<%= settings.thumbnails %>',
                     src: ['*.jpg'],
                     dest: '<%= settings.build %>/<%= settings.thumbnails %>'
                 }],
@@ -172,12 +166,6 @@ module.exports = function(grunt) {
                 tasks: [ 'build_static_files' ],
             },
 
-            thumbnails: {
-                //Listen for changed static files
-                files: [ '<%= settings.thumbnails %>' ],
-                tasks: [ 'build_static_files' ],
-            },
-
             markup_files: {
                 //Listen for changed markup files
                 files: [ '*.html' ],
@@ -242,8 +230,7 @@ module.exports = function(grunt) {
         'Build static files.', 
         [ 'newer:clean:static_files',
           'newer:copy:static_files',
-          'newer:clean:thumbnails',
-          'newer:imagemin:thumbnails',
+          //'newer:imagemin:compress_thumbnails',
            ]
     );
 
