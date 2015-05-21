@@ -7,14 +7,15 @@
   "devDependencies": {
     "grunt": "~0.4.x",
     "grunt-notify": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-contrib-copy": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-newer": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-less": "*",
-    "grunt-autoprefixer": "*",
-    "grunt-match-media": "*"
+    "grunt-contrib-clean": "0.6.*",
+    "grunt-contrib-copy": "0.8.*",
+    "grunt-contrib-watch": "0.6.*",
+    "grunt-contrib-imagemin": "0.9.*",
+    "grunt-newer": "1.1.*",
+    "grunt-contrib-uglify": "0.9.*",
+    "grunt-contrib-less": "1.0.*",
+    "grunt-autoprefixer": "3.0.*",
+    "grunt-match-media": "0.1.*"
   },
   "engine": "node >= 0.10"
 }

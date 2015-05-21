@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+    var mozjpeg = require('imagemin-mozjpeg');
+
     // configure the tasks
     grunt.initConfig({
 
@@ -7,7 +9,8 @@ module.exports = function(grunt) {
         settings: {
             source: 'source',
             build: 'build',
-            static_files_pattern: ['img/**', 'fonts/**', 'files/**' ],
+            static_files_pattern: ['img/**', '!img/works', 'fonts/**', 'files/**' ],
+            thumbnails: ['img/works' ],
         },
 
         clean: {
@@ -16,6 +19,12 @@ module.exports = function(grunt) {
                 expand: true,                                // Enable dynamic expansion.
                 cwd: '<%= settings.build %>',                // Src matches are relative to this path.
                 src: '<%= settings.static_files_pattern %>', // Actual pattern(s) to match.
+            },
+
+            thumbnails: {
+                expand: true,
+                cwd: '<%= settings.build %>',
+                src: '<%= settings.thumbnails %>',
             },
 
             markup_files: {
@@ -66,6 +75,21 @@ module.exports = function(grunt) {
                 }],
             },
         }, //end Copy
+
+        imagemin: {
+            options: {
+                optimizationLevel: 3,
+                use: [mozjpeg({quality: 75})]
+            },
+            thumbnails: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.source %>/<%= settings.thumbnails %>',
+                    src: ['*.jpg'],
+                    dest: '<%= settings.build %>/<%= settings.thumbnails %>'
+                }],
+            }
+        }, //end imagemin
 
         less: {
             options: {
@@ -148,6 +172,12 @@ module.exports = function(grunt) {
                 tasks: [ 'build_static_files' ],
             },
 
+            thumbnails: {
+                //Listen for changed static files
+                files: [ '<%= settings.thumbnails %>' ],
+                tasks: [ 'build_static_files' ],
+            },
+
             markup_files: {
                 //Listen for changed markup files
                 files: [ '*.html' ],
@@ -187,6 +217,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-newer');
     
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -211,6 +242,8 @@ module.exports = function(grunt) {
         'Build static files.', 
         [ 'newer:clean:static_files',
           'newer:copy:static_files',
+          'newer:clean:thumbnails',
+          'newer:imagemin:thumbnails',
            ]
     );
 
