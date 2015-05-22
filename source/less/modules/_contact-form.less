@@ -1,6 +1,7 @@
 .contact-form{
 	
 	&__element {
+		position: relative;
 		padding-top: @global-gutter--small;
 		display: block;
 		clear: both;
@@ -10,13 +11,46 @@
 		float: right;
 	}
 
+	&__error {
+
+		position: absolute;
+		top: @global-gutter--small;
+		right: @global-gutter--small;
+		bottom: 0;
+
+		opacity: 0;
+		transition: opacity .25s ease;
+
+		&::before {
+
+		}
+	}
+
 	&__alert {
 
 	}
 
-	&__loading {
+	&__spinner {
+		float: right;
+		margin-top: @global-gutter--small;
+		margin-right: @global-gutter--small;
+		opacity: 0;
 
+		animation: spin 1s linear infinite;
+		transition: opacity .25s ease;
+
+		@keyframes spin {
+			from {
+				transform: rotate(-360deg);
+				//transform-origin: 50% 50%;
+			}
+			to {
+				transform: rotate(0deg);
+				//transform-origin: 50% 50%;
+			}
+		}
 	}
+
 }
 
 

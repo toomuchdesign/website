@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         settings: {
             source: 'source',
             build: 'build',
-            static_files_pattern: ['img/**', 'fonts/**', 'files/**' ],
+            static_files_pattern: ['img/**', 'fonts/**', 'files/**', 'scripts/**' ],
             thumbnails: ['img/works' ],
             bower: 'bower_components',
         },
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
             //Uglify all .js files in js folder except for files beginning with '_' 
             javascript_files: {
                 options: {
-                  sourceMap: true,
+                    sourceMap: true,
                 },
                 files: [{
                     expand: true,
@@ -152,8 +152,8 @@ module.exports = function(grunt) {
             javascript_plugins: {
                 files: {
                     '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
-                                                                '<%= settings.bower %>/Placeholders.js/dist/placeholders.js'
-                                                                '<%= settings.bower %>/echojs/echo.js'
+                                                                '<%= settings.bower %>/Placeholders.js/dist/placeholders.js',
+                                                                '<%= settings.bower %>/echojs/echo.js',
                                                                 ],
                 }
             }

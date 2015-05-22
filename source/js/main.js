@@ -33,40 +33,23 @@
                 formName = document.getElementById( 'name' ),
                 formEmail = document.getElementById( 'email' ),
                 formMessage = document.getElementById( 'message' ),
-                formSubmit = document.getElementById( 'submit' );
+                formSubmit = document.getElementById( 'submit' ),
+                formMail = document.getElementById( 'mail' ),           //formMail is just a honeypot
+                formAlert = document.getElementById( 'form-alert' ),
+                formSpinner = document.getElementById( 'form-spinner' );
+
 
             /* on Blur: Validate and return true/false */
             formName.addEventListener( 'blur', function() {
-                 if ( /^(|\s*)$/.test( this.value )) {
-                    this.previousElementSibling.css( 'opacity', 1 );
-                    return false;
-                 } else {
-                    this.previousElementSibling.css( 'opacity', 0 );
-                    return true;
-                 }
+                AC.validateField( this );
             });
 
             formEmail.addEventListener( 'blur', function() {
-                 if ( /^(|\s*)$/.test( this.value )) {
-                    this.previousElementSibling.css( 'opacity', 1 );
-                    return false;
-                 } else if ( !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test( this.value )) {
-                    this.previousElementSibling.css( 'opacity', 1 );
-                    return false;
-                 } else {
-                    this.previousElementSibling.css( 'opacity', 0 );
-                    return true;
-                 }
+                AC.validateField( this );
             });
 
             formMessage.addEventListener( 'blur', function() {
-                 if ( /^(|\s*)$/.test( this.value )) {
-                    this.previousElementSibling.css( 'opacity', 1 );;
-                    return false;
-                 } else {
-                    this.previousElementSibling.css( 'opacity', 0 );
-                    return true;
-                 }
+                AC.validateField( this );
             });
             
             /* On form submit... */
@@ -77,83 +60,88 @@
             
                 var validation = true;
 
-                //Trigger blur event for every input (Blur event makes validation and returns true/false)
+                //Trigger complete form validation
                 validation =    validation *
-                                formName.triggerHandler( 'blur' ) *
-                                formEmail.triggerHandler( 'blur' ) *
-                                formMessage.triggerHandler( 'blur' ) *
-                                mail.value;
+                                AC.validateField( formName ) *
+                                AC.validateField( formEmail ) *
+                                AC.validateField( formMessage );
                         
-                if ( validation ) {
+                if ( validation && !formMail.value ) {
 
                     //Organize the data properly
-                    var data = {
-                        name: formName.value,
-                        mail: mail.value,
-                        email: email.value,
-                        message: encodeURIComponent( message.value )
-                    }
+                    var data =
+                    'name=' + formName.value +
+                    '&mail=' + formMail.value +
+                    '&email=' + formEmail.value +
+                    '&message=' + encodeURIComponent( formMessage.value );
                     
-                    //disabled all the text fields
-                    $cForm.find('.text').attr('disabled','true');
+                    //Disabled all text fields
+                    formName.setAttribute( 'disabled', true );
+                    formMail.setAttribute( 'disabled', true );
+                    formMessage.setAttribute( 'disabled', true );
 
-                    el.setAttribute('tabindex', 3);
+                    //Cancel the submit button default behaviours
+                    formSubmit.setAttribute( 'disabled', true );
+                    formSubmit.setAttribute( 'value', msg['sending'] );
 
-                    //cancel the submit button default behaviours
-                    $formSubmit.attr({'disabled' : 'true', 'value' : msg['sending']});
-                    //show the loading sign
-                    $cForm.find('form-loading').show();
+                    //Show the loading spinner
+                    formSpinner.style.opacity = 1;
 
                     //Start the ajax request
                     var request = new XMLHttpRequest();
                     request.open( 'GET', 'scripts/contactmail.php', true );
 
                     request.onload = function() {
-                      if (request.status >= 200 && request.status < 400) {
-                        // Success!
-                        var resp = request.responseText;
-                      } else {
-                        // We reached our target server, but it returned an error
-
-                      }
+                        if ( request.status >= 200 && request.status < 400 ) {
+                            // Success!
+                            formSubmit.setAttribute( 'value', msg['thanks'] );
+                            var resp = request.responseText;
+                            console.log(resp);
+                        } else {
+                            // We reached our target server, but it returned an error
+                            formAlert.innerHTML = msg['please_retry'];
+                            formSubmit.setAttribute( 'value', msg['retry'] );
+                        }
+                        formSpinner.style.opacity = 0;
                     };
 
                     request.onerror = function() {
-                      // There was a connection error of some sort
+                        //There was a connection error of some sort
+                        formAlert.innerHTML = msg['please_retry'];
+                        formSubmit.setAttribute( 'value', msg['retry'] );
+                        formSpinner.style.opacity = 0;
                     };
 
+                    console.log( 'Sending' );
+                    console.log( data );
                     request.send( data );
                     
-                    $.ajax({
-                        //url: $('#contact-form').attr('action'),
-                        url: "scripts/contactmail.php",
-                        
-                        //Pass data
-                        data: data,
-                        dataType: 'json',
-                        timeout: 10000,
-                        
-                        success: function (data) {
-                            //if sent
-                            if (data.sent == 1) { $formSubmit.attr({'value' : msg['thanks']}) }
-                            
-                            //if sending problems
-                            else {  $cForm.find('p.form-message').html(data.msg).slideDown(500);
-                                    $formSubmit.attr({'value' : msg['retry']})
-                            }
-                            $cForm.find('div.loading').fadeOut(500);
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            if (errorThrown == 'timeout') {errorThrown = msg['server_problem']}
-                            $cForm.find('p.form-message').html(errorThrown +'. '+msg['please_retry']).slideDown(500);
-                            $formSubmit.attr({'value' : msg['retry'] });
-                            $cForm.find('div.loading').fadeOut(500);
-                        }
-
-                    });
                 } // end if Validation
                 
             }); 
+        },
+
+        validateField : function( field ){
+if
+             ( field.id == 'email' ) {
+                //Regex again email format
+                if ( /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test( field.value )) {
+                   field.previousElementSibling.style.opacity = 0;
+                   return true;
+                }
+            }
+
+            if ( field.id == 'name' || field.id == 'message' ) {
+                //Regex again empty spaces
+                if ( field.value && !/^\s*$/.test( field.value )) {
+                   field.previousElementSibling.style.opacity = 0;
+                   return true;
+                }
+            }
+
+            //Make validation fail by default
+            field.previousElementSibling.style.opacity = 1;
+            return false;
         }
         
     }; //End AC
@@ -162,5 +150,4 @@
     domready(function() {
         AC.onReady();
     })
-                
 })();

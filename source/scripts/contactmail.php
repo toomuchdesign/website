@@ -1,4 +1,5 @@
-<?php header('content-type: application/json; charset=utf-8');
+<?php
+header('content-type: application/json; charset=utf-8');
 
 function is_valid_callback($subject) {
     $identifier_syntax
@@ -17,6 +18,7 @@ function is_valid_callback($subject) {
 }
 
 function is_ajax_request() {
+	return true;
 	//ServerSide if ajax Check
 	return (
 	(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
@@ -37,19 +39,16 @@ function isValidString($str){
 $email_to = "toomuchdesign@gmail.com";
 
 //Get vars end cut them
-if (is_ajax_request()) {
+if ( is_ajax_request() ) {
 	$name = substr($_GET['name'], 0, 50);
 	$spam = substr($_GET['mail'], 0, 50);
 	$email = substr($_GET['email'], 0, 50);
 	$comment = urldecode(substr($_GET['message'], 0, 1000));
-	$lang = substr($_GET['lang'], 0, 2);
-	
 } else {
 	$name = substr($_POST['name'], 0, 50);
 	$spam = substr($_POST['mail'], 0, 50);
 	$email = substr($_POST['email'], 0, 50);
 	$comment = substr($_POST['message'], 0, 1000);
-	$lang = substr($_POST['lang'], 0, 2);
 }
 
 $message = "Name: $name \ne-mail: $email \n\nComment: $comment";
@@ -58,23 +57,6 @@ $headers = 'From: '.$email. "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 
 //Set Reply message according to Language
-if($lang=='it'){		
-$reply_message = "Ciao $name,
-
-grazie per il tempo che hai dedicato a visitare il mio sito,
-riceverai risposta a breve.
-
-Sotto una copia del tuo messaggio
-A presto.
-
-Andrea Carraro
-
-------+------
-$comment
-------+------
-
-andreacarraro.it | toomuchdesign.net | info@andreacarraro.it";
-} else {
 $reply_message = "Hi $name,
 
 thank you for the time you spent on my website,
@@ -89,8 +71,7 @@ Andrea Carraro
 $comment
 ------+------
 
-andreacarraro.it | toomuchdesign.net | info@andreacarraro.it";
-}
+andreacarraro.it | toomuchdesign.net | hi@andreacarraro.it";
 
 $reply_headers = 'From: info@andreacarraro.it' . "\r\n" .
 			'Reply-To: info@andreacarraro.it' . "\r\n" .
@@ -99,7 +80,7 @@ $reply_headers = 'From: info@andreacarraro.it' . "\r\n" .
 $validation = 0;
 
 //Do Validation
-if ( isValidEmail($email) &&  isValidString($name) && isValidString($message) && $spam == '' ) {
+if ( isValidEmail($email) && isValidString($name) && isValidString($message) && $spam == '' ) {
 	$validation = 1;
 }
 
@@ -148,21 +129,11 @@ if(is_ajax_request()){
 } else {
 	//Else.. redirect in case of request without JS
 	if( $data['sent'] == '1') {
-		if ($lang=='it'){
-			header("Location: http://www.andreacarraro.it/grazie.html");
-		} else {
-			header("Location: http://www.andreacarraro.it/thankyou.html");
-		}
-		exit;
-		}
+		header("Location: http://www.andreacarraro.it/thankyou.html");
+	}
 	if( $data['sent'] == '0') {
-		if ($lang=='it'){
-			header("Location: http://www.andreacarraro.it/errore.html");
-		} else {
-			header("Location: http://www.andreacarraro.it/error.html");
-		}
-		exit;
-		}
+		header("Location: http://www.andreacarraro.it/error.html");
+	}
 }
 // Otherwise, bad request
 header('status: 400 Bad Request', true, 400);

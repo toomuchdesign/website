@@ -377,7 +377,7 @@
                         <form id="contact-form" class="form contact-form" action="scripts/contactmail.php" method="post">
                             <div class="contact-form__element contact-form__element--small">
                                 <label for="name" class="visuallyhidden">Name</label>
-                                <span class="contact-form__error"></span>
+                                <span class="contact-form__error icon icon-cross"></span>
                                 <input type="text" value="" class="text" id="name" name="name" maxlength="50" placeholder="Name">
                             </div>
                             <div class="contact-form__element contact-form__element--small">
@@ -385,18 +385,18 @@
                                 <input type="text" value="" class="text hidden" id="mail" name="mail" maxlength="50">
                                 
                                 <label for="email" class="visuallyhidden">Email</label>
-                                <span class="contact-form__error"></span>
+                                <span class="contact-form__error icon icon-cross"></span>
                                 <input type="text" value="" class="text" id="email" name="email" maxlength="50" placeholder="E-mail">
                             </div>
                             <div class="contact-form__element">
                                 <label for="message" class="visuallyhidden">Message</label>
-                                <span class="contact-form__error"></span>
+                                <span class="contact-form__error icon icon-cross"></span>
                                 <textarea class="text textarea" id="message" name="message" placeholder="Your message"></textarea>
                             </div>
                             <div class="contact-form__element">
-                                <p class="contact-form__alert" id="contact-form__alert"></p>
-                                <div class="contact-form__loading"></div>
+                                <p id="form-alert" class="contact-form__alert"></p>
                                 <input type="submit" class="contact-form__button button button--primary" id="submit" value="Send!">
+                                <div id="form-spinner" class="contact-form__spinner icon icon-spinner"></div>
                             </div>
                             <input type="hidden" value="7" id="human" name="human">
                         </form>
