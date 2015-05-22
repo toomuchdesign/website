@@ -12,3 +12,4 @@ client/dist/*pre*.js
 
 # PROJECT FILES
 build
+bower_components

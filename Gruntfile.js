@@ -11,6 +11,7 @@ module.exports = function(grunt) {
             build: 'build',
             static_files_pattern: ['img/**', 'fonts/**', 'files/**' ],
             thumbnails: ['img/works' ],
+            bower: 'bower_components',
         },
 
         clean: {
@@ -136,6 +137,9 @@ module.exports = function(grunt) {
 
             //Uglify all .js files in js folder except for files beginning with '_' 
             javascript_files: {
+                options: {
+                  sourceMap: true,
+                },
                 files: [{
                     expand: true,
                     cwd: '<%= settings.source %>/js',
@@ -144,10 +148,13 @@ module.exports = function(grunt) {
                 }],
             },
 
-            //Join all file lying in source/js/_plugins folder into plugins.js
+            //Join all Bower dependencies
             javascript_plugins: {
                 files: {
-                    '<%= settings.build %>/js/plugins.js': [ '<%= settings.source %>/js/_plugins/*.js' ],
+                    '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
+                                                                '<%= settings.bower %>/Placeholders.js/dist/placeholders.js'
+                                                                '<%= settings.bower %>/echojs/echo.js'
+                                                                ],
                 }
             }
         }, //end Uglify

@@ -1,0 +1,21 @@
+{
+  "name": "andreacarraro.it",
+  "version": "0.0.0",
+  "homepage": "https://github.com/toomuchdesign/website",
+  "authors": [
+    "Andrea Carraro <toomuchdesign@gmail.com>"
+  ],
+  "description": "My personal website - 2015",
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "echojs": "~1.7.1",
+    "domready": "~1.0.8",
+    "Placeholders.js": "~4.0.1"
+  }
+}
