@@ -153,7 +153,7 @@ module.exports = function(grunt) {
                 files: {
                     '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
                                                                 '<%= settings.bower %>/Placeholders.js/dist/placeholders.js',
-                                                                '<%= settings.bower %>/echojs/echo.js',
+                                                                '<%= settings.bower %>/echojs/dist/echo.js',
                                                                 ],
                 }
             }

@@ -43,14 +43,54 @@
 		margin-top: @global-gutter--small;
 		float: left;
 		margin: 0 1%;
+		background-color: darken( @global-background, 8% );
 		box-shadow: @global-shadow;
 
 		&--small {
 			width: 27%;
+
+			//Keep thumbnail ratio until image is actually loaded
+			>img {
+				padding-top: 178%;
+			}
 		}
 
 		&--large {
 			width: 69%;
+
+			//Keep thumbnail ratio until image is actually loaded
+			>img {
+				padding-top: 70%;
+			}
 		}
+
+		&--full {
+			width: 100%;
+
+			//Keep thumbnail ratio until image is actually loaded
+			>img {
+				padding-top: 48%;
+			}
+		}
+
+		>img {
+
+			//Hide image for a funny fade in effect on image load
+			opacity: 0;
+			transition: opacity 1s ease;
+		}
+
+		&.loaded {
+
+			>img {
+
+				//Remove thumbnail ratio padding
+				padding-top: 0;
+
+				//Fade in image when thumbnail is actually loaded
+				opacity: 1;
+			}
+		}
+
 	}
 }

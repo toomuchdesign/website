@@ -16,7 +16,26 @@
         
         setUpSite : function () {
             console.log('AC.setUpSite');
+
+            AC.initializeLazyLoadingImages();
             AC.initializeContactForm();
+        },
+
+        initializeLazyLoadingImages : function () {
+
+            echo.init({
+                offset: 0,
+                unload: false,
+                callback: function( element, op ) {
+                    setTimeout( function(){
+                        if( op === 'load' ) {
+                            element.parentNode.classList.add( 'loaded' );
+                        } else {
+                            element.parentNode.classList.remove( 'loaded' );
+                        }       
+                    }, 0 );
+                }
+            });
         },
 
         initializeContactForm : function () {
