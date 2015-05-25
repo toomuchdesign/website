@@ -1,8 +1,10 @@
 .contact-form{
+
+	margin: 0 -@global-gutter--small/2;
 	
 	&__element {
 		position: relative;
-		padding-top: @global-gutter--small;
+		padding: @global-gutter--small @global-gutter--small/2 0 @global-gutter--small/2;
 		display: block;
 		clear: both;
 	}
@@ -14,20 +16,22 @@
 	&__error {
 
 		position: absolute;
-		top: @global-gutter--small;
-		right: @global-gutter--small;
+		top: @global-gutter--small + 10px;
+		right: @global-gutter--small/2 + 10px;
 		bottom: 0;
 
 		opacity: 0;
 		transition: opacity .25s ease;
-
-		&::before {
-
+		
+		//Steal some input space at the end of its related input element
+		+input {
+			padding-right: 35px;
 		}
 	}
 
 	&__alert {
-
+		clear: both;
+		padding-top: @global-gutter--small;
 	}
 
 	&__spinner {
@@ -50,7 +54,6 @@
 			}
 		}
 	}
-
 }
 
 
@@ -60,11 +63,5 @@
 		.c6();
 		float: left;
 		clear: none;
-		padding-right: @global-gutter--small/2;
-
-		& + .contact-form__element--small {
-			padding-right: 0;
-			padding-left: @global-gutter--small/2;
-		}
 	}
 }
