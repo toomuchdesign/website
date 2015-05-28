@@ -16,6 +16,7 @@
   "devDependencies": {
     "echojs": "~1.7.1",
     "domready": "~1.0.8",
-    "Placeholders.js": "~4.0.1"
+    "Placeholders.js": "~4.0.1",
+    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git#~5.3.7"
   }
 }

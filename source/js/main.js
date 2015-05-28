@@ -17,12 +17,20 @@
         setUpSite : function () {
             console.log('AC.setUpSite');
 
+            AC.initializeSmoothScroll();
             AC.initializeLazyLoadingImages();
             AC.initializeContactForm();
         },
 
+        initializeSmoothScroll : function () {
+
+            //https://github.com/cferdinandi/smooth-scroll
+            smoothScroll.init();
+        },
+
         initializeLazyLoadingImages : function () {
 
+            //https://github.com/toddmotto/echo
             echo.init({
                 offset: 0,
                 unload: false,

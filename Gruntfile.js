@@ -149,11 +149,12 @@ module.exports = function(grunt) {
             },
 
             //Join all Bower dependencies
-            javascript_plugins: {
+            bower_components: {
                 files: {
                     '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
                                                                 '<%= settings.bower %>/Placeholders.js/dist/placeholders.js',
                                                                 '<%= settings.bower %>/echojs/dist/echo.js',
+                                                                '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
                                                                 ],
                 }
             }
@@ -189,12 +190,6 @@ module.exports = function(grunt) {
                 //Listen for changed .js files in /js folder
                 files: [ 'js/*.js' ],
                 tasks: [ 'uglify:javascript_files' ],
-            },
-
-            javascript_plugins: {
-                //Listen for changed .js plugins files in /_plugins folder
-                files: [ 'js/_plugins/*' ],
-                tasks: [ 'uglify:javascript_plugins' ],
             },
 
             javascript_vendor: {
@@ -262,7 +257,7 @@ module.exports = function(grunt) {
         'build_javascript', 
         'Build Javascript.', 
         [ 'uglify:javascript_files',      // Uglify Project-related JS files and move them into build folder
-          'uglify:javascript_plugins',    // Uglify JS 3rd-party plugins and move them into build folder
+          'uglify:bower_components',      // Uglify JS 3rd-party plugins and move them into build folder
           'clean:javascript_vendor',      // Clean build JS Vendor folder
           'copy:javascript_vendor',       // Copy files into build JS Vendor folder
            ]
