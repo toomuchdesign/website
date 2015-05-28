@@ -35,13 +35,17 @@
                 offset: 0,
                 unload: false,
                 callback: function( element, op ) {
-                    setTimeout( function(){
-                        if( op === 'load' ) {
-                            element.parentNode.classList.add( 'loaded' );
-                        } else {
-                            element.parentNode.classList.remove( 'loaded' );
-                        }       
-                    }, 0 );
+
+                    if( op === 'load' ) {
+
+                        //Detect truly image loaded event
+                        //https://github.com/desandro/imagesloaded
+                        imagesLoaded( element, function( imagesLoadedObj ) {
+                            imagesLoadedObj.elements[0].parentNode.classList.add( 'loaded' );
+                        });
+                    } else {
+                        element.parentNode.classList.remove( 'loaded' );
+                    }
                 }
             });
         },
