@@ -18,14 +18,11 @@ function is_valid_callback($subject) {
 }
 
 function is_ajax_request() {
-	return true;
 	//ServerSide if ajax Check
-	return (
-	(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
-	) ? true : false;
+	//return ( (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') ) ? true : false;
 	
-	//check if Ajax request reading a value of the GET
-	//(substr($_GET['ajx'], 0, 2)) == 1 ? true : false;
+	//Check if Ajax request reading a value of the GET
+	return substr($_GET['ajx'], 0, 2) == 1 ? true : false;
 }
 
 function isValidEmail($email){
@@ -36,7 +33,7 @@ function isValidString($str){
 	return (strlen($str) > 2 ? true : false);
 }
 
-$email_to = "toomuchdesign@gmail.com";
+$email_to = "hi@andreacarraro.it";
 
 //Get vars end cut them
 if ( is_ajax_request() ) {
@@ -71,10 +68,10 @@ Andrea Carraro
 $comment
 ------+------
 
-andreacarraro.it | toomuchdesign.net | hi@andreacarraro.it";
+andreacarraro.it | hi@andreacarraro.it";
 
-$reply_headers = 'From: info@andreacarraro.it' . "\r\n" .
-			'Reply-To: info@andreacarraro.it' . "\r\n" .
+$reply_headers = 'From: hi@andreacarraro.it' . "\r\n" .
+			'Reply-To: hi@andreacarraro.it' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 
 $validation = 0;
@@ -85,9 +82,9 @@ if ( isValidEmail($email) && isValidString($name) && isValidString($message) && 
 }
 
 if ($validation == 1) {
-	//If validation OK e mail OK
+	//If validation and mail OK
 	if (	mail("$email_to",
-				"Form spedito da andreacarraro.it",
+				"Message sent from andreacarraro.it",
 				$message,
 				$headers) ){
 	 
@@ -112,11 +109,20 @@ if ($validation == 1) {
 	$data['msg'] = 'I found some validation problems. Please, check your inputs again.';
 }
 
+//Additional debug data
+//$data['email'] = $email;
+//$data['name'] = $name;
+//$data['message'] = $message;
+//$data['spam'] = $spam;
+//$data['ajx'] = substr($_GET['ajx'], 0, 2);
+//$data['get'] = $_GET;
+//$data['post'] = $_POST;
+
 //$data = array(1, 2, 3, 4, 5, 6, 7, 8, 9);
 $json = json_encode($data);
 
 //if JSON or JSONP request
-if(is_ajax_request()){
+if( is_ajax_request() ){
 
 	// JSON if no callback
 	if( ! isset($_GET['callback']))
@@ -126,7 +132,9 @@ if(is_ajax_request()){
 	if(is_valid_callback($_GET['callback']))
 		exit("{$_GET['callback']}($json)");
 		
-} else {
+}
+//Users without JS not doing Ajax calls.
+/*else {
 	//Else.. redirect in case of request without JS
 	if( $data['sent'] == '1') {
 		header("Location: http://www.andreacarraro.it/thankyou.html");
@@ -134,7 +142,8 @@ if(is_ajax_request()){
 	if( $data['sent'] == '0') {
 		header("Location: http://www.andreacarraro.it/error.html");
 	}
-}
+}*/
+
 // Otherwise, bad request
 header('status: 400 Bad Request', true, 400);
 ?>

@@ -101,10 +101,11 @@
 
                     //Organize the data properly
                     var data =
-                    'name=' + formName.value +
-                    '&mail=' + formMail.value +
-                    '&email=' + formEmail.value +
-                    '&message=' + encodeURIComponent( formMessage.value );
+                    'name=' + encodeURIComponent( formName.value ) +
+                    '&mail=' + encodeURIComponent( formMail.value ) +
+                    '&email=' + encodeURIComponent( formEmail.value ) +
+                    '&message=' + encodeURIComponent( formMessage.value ) +
+                    '&ajx=1' //Ajax flag for server processing
                     
                     //Disabled all text fields
                     formName.setAttribute( 'disabled', true );
@@ -120,14 +121,23 @@
 
                     //Start the ajax request
                     var request = new XMLHttpRequest();
-                    request.open( 'GET', 'scripts/contactmail.php', true );
+                    request.open( 'GET', 'scripts/contactmail.php?' + data, true );
 
                     request.onload = function() {
                         if ( request.status >= 200 && request.status < 400 ) {
-                            // Success!
-                            formSubmit.setAttribute( 'value', msg['thanks'] );
-                            var resp = request.responseText;
+                            // Ajax Success!
+
+                            //Check server response status
+                            console.log(request.responseText);
+                            var resp = JSON.parse( request.responseText );
                             console.log(resp);
+
+                            if( resp.sent == 1 ){
+                                formSubmit.setAttribute( 'value', msg['thanks'] );
+                            } else {
+                                formAlert.innerHTML = resp.msg;
+                                formSubmit.setAttribute( 'value', msg['retry'] );
+                            }
                         } else {
                             // We reached our target server, but it returned an error
                             formAlert.innerHTML = msg['please_retry'];
@@ -145,7 +155,7 @@
 
                     console.log( 'Sending' );
                     console.log( data );
-                    request.send( data );
+                    request.send();
                     
                 } // end if Validation
                 
@@ -153,8 +163,7 @@
         },
 
         validateField : function( field ){
-if
-             ( field.id == 'email' ) {
+            if ( field.id == 'email' ) {
                 //Regex again email format
                 if ( /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test( field.value )) {
                    field.previousElementSibling.style.opacity = 0;
