@@ -36,11 +36,15 @@
                 unload: false,
                 callback: function( element, op ) {
 
+                    //Add loading class to lazy loading image being loaded
+                    element.parentNode.classList.add( 'loading' );
+
                     if( op === 'load' ) {
 
                         //Detect truly image loaded event
                         //https://github.com/desandro/imagesloaded
                         imagesLoaded( element, function( imagesLoadedObj ) {
+                            imagesLoadedObj.elements[0].parentNode.classList.remove( 'loading' );
                             imagesLoadedObj.elements[0].parentNode.classList.add( 'loaded' );
                         });
                     } else {
