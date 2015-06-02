@@ -143,15 +143,3 @@
 ----------------------------------------------- */
 @path-to-template:                                      '../';
 @global-touch-elements-size:                            44px;
-
-
-// Set icons background position
-.setIconsBgPos(@Y: 1, @X: 1) {
-    @Xshift: -@global-icons-size;
-    @Yshift: -@global-icons-size;
-    background-position: (@Xshift * (@X - 1)) (@Yshift * (@Y - 1));
-}
-
-
-/* =Skin-related mixins
------------------------------------------------ */
