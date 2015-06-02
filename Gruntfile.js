@@ -88,8 +88,8 @@ module.exports = function(grunt) {
 
         less: {
             options: {
-                cleancss: false,
-                compress: false,
+                cleancss: true,
+                compress: true,
             },
 
             stylesheets: {
