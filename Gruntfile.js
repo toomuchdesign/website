@@ -162,6 +162,7 @@ module.exports = function(grunt) {
                                                                 '<%= settings.bower %>/echojs/dist/echo.js',
                                                                 '<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
                                                                 '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
+                                                                '<%= settings.bower %>/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
                                                                 ],
                 }
             },
