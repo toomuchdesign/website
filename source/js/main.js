@@ -6,17 +6,25 @@
     //Avoid accidental global variable declarations
     "use strict";
         
+    //Store reference to HTML            
+    var html = document.documentElement;
+
     var AC = {
         
         onReady : function () {
             
             //Go on and set up website
             AC.setUpSite();
+
         },
         
         setUpSite : function () {
             console.log('AC.setUpSite');
 
+            //Set html replace html no-js with js class
+            html.className = document.documentElement.className.replace( 'no-js', 'js' );
+
+            AC.initializePlaceholdersFallback();
             AC.initializeSmoothScroll();
             AC.initializeLazyLoadingImages();
             AC.initializeContactForm();
@@ -52,6 +60,17 @@
                     }
                 }
             });
+        },
+
+        initializePlaceholdersFallback : function () {
+            if( !AC.supportsPlaceholders() ){
+                html.className += ' no-placeholder';
+            }
+        },
+
+        supportsPlaceholders : function () {
+            //see: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/forms/placeholder.js
+            return ('placeholder' in document.createElement('input') && 'placeholder' in document.createElement('textarea'));
         },
 
         initializeContactForm : function () {

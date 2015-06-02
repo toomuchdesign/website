@@ -9,6 +9,15 @@
 		clear: both;
 	}
 
+	&__label {
+		display: none;
+		padding: 5px;
+
+		.no-placeholder & {
+			display: block;
+		}
+	}
+
 	&__button {
 		float: right;
 	}
@@ -16,9 +25,8 @@
 	&__error {
 
 		position: absolute;
-		top: @global-gutter--small + 10px;
+		bottom: @global-gutter--small;
 		right: @global-gutter--small/2 + 10px;
-		bottom: 0;
 
 		opacity: 0;
 		transition: opacity .25s ease;

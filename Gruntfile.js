@@ -158,7 +158,6 @@ module.exports = function(grunt) {
             bower_components: {
                 files: {
                     '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
-                                                                '<%= settings.bower %>/Placeholders.js/dist/placeholders.js',
                                                                 '<%= settings.bower %>/echojs/dist/echo.js',
                                                                 '<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
                                                                 '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
