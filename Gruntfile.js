@@ -9,8 +9,8 @@ module.exports = function(grunt) {
         settings: {
             source: 'source',
             build: 'build',
-            static_files_pattern: ['img/**', '!img/works', 'fonts/**', 'files/**', 'scripts/**' ],
-            thumbnails: ['img/works' ],
+            static_files_pattern: [ 'img/**', '!img/works', 'fonts/**', 'files/**', 'scripts/**' ],
+            thumbnails: [ 'img/works' ],
             bower: 'bower_components',
         },
 
@@ -28,6 +28,11 @@ module.exports = function(grunt) {
 
             stylesheets: {
                 src: [ '<%= settings.build %>/css/*.css' ]
+            },
+
+            javascript: {
+                src: [ '<%= settings.build %>/js/**' ],
+                filter: 'isFile',
             },
 
             javascript_vendor: {
@@ -135,11 +140,12 @@ module.exports = function(grunt) {
 
         uglify: {
 
+            options: {
+                sourceMap: true,
+            },
+
             //Uglify all .js files in js folder except for files beginning with '_' 
             javascript_files: {
-                options: {
-                    sourceMap: true,
-                },
                 files: [{
                     expand: true,
                     cwd: '<%= settings.source %>/js',
@@ -158,8 +164,22 @@ module.exports = function(grunt) {
                                                                 '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
                                                                 ],
                 }
-            }
-        }, //end Uglify
+            },
+
+        }, //end uglify
+
+        concat: {
+            javascript_files: {
+                options: {
+                    sourceMap: true,
+                },
+                files: {
+                    '<%= settings.build %>/js/global.js': [ '<%= settings.build %>/js/plugins.js',
+                                                            '<%= settings.build %>/js/main.js',
+                                                            ]
+                }
+            },
+        }, //end uglify
 
         watch: {
 
@@ -190,7 +210,7 @@ module.exports = function(grunt) {
             javascript_files: {
                 //Listen for changed .js files in /js folder
                 files: [ 'js/*.js' ],
-                tasks: [ 'uglify:javascript_files' ],
+                tasks: [ 'build_javascript' ],
             },
 
             javascript_vendor: {
@@ -208,6 +228,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-newer');
     
@@ -257,8 +279,10 @@ module.exports = function(grunt) {
     grunt.registerTask (
         'build_javascript', 
         'Build Javascript.', 
-        [ 'uglify:javascript_files',      // Uglify Project-related JS files and move them into build folder
+        [ 'clean:javascript',             // Clean build JS files
+          'uglify:javascript_files',      // Uglify Project-related JS files and move them into build folder
           'uglify:bower_components',      // Uglify JS 3rd-party plugins and move them into build folder
+          'concat:javascript_files',      // Join JS files in a single file
           'clean:javascript_vendor',      // Clean build JS Vendor folder
           'copy:javascript_vendor',       // Copy files into build JS Vendor folder
            ]
