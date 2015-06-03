@@ -18,7 +18,7 @@
         },
 
         setUpSite : function () {
-            //console.log('AC.setUpSite');
+            console.log('AC.setUpSite');
 
             //Set html replace html no-js with js class
             html.className = document.documentElement.className.replace( 'no-js', 'js' );
