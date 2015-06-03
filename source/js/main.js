@@ -18,7 +18,7 @@
         },
 
         setUpSite : function () {
-            console.log('AC.setUpSite');
+            //console.log('AC.setUpSite');
 
             //Set html replace html no-js with js class
             html.className = document.documentElement.className.replace( 'no-js', 'js' );
@@ -148,9 +148,9 @@
                             // Ajax Success!
 
                             //Check server response status
-                            console.log(request.responseText);
+                            //console.log(request.responseText);
                             var resp = JSON.parse( request.responseText );
-                            console.log(resp);
+                            //console.log(resp);
 
                             if( resp.sent === 1 ){
                                 formSubmit.setAttribute( 'value', msg.thanks );
@@ -173,8 +173,8 @@
                         formSpinner.style.opacity = 0;
                     };
 
-                    console.log( 'Sending' );
-                    console.log( data );
+                    //console.log( 'Sending' );
+                    //console.log( data );
                     request.send();
                     
                 } // end if Validation
