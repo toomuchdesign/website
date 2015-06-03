@@ -17,7 +17,8 @@
     "grunt-match-media": "0.1.*",
     "grunt-newer": "1.1.*",
     "grunt-notify": "*",
-    "imagemin-mozjpeg": "5.1.*"
+    "imagemin-mozjpeg": "5.1.*",
+    "load-grunt-tasks": "^3.2.0"
   },
   "engine": "node >= 0.10"
 }

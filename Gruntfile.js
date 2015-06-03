@@ -223,21 +223,7 @@ module.exports = function(grunt) {
     });
 
     // load the tasks
-    grunt.loadNpmTasks('grunt-notify');
-
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-newer');
-    
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-match-media');
-
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    require('load-grunt-tasks')(grunt);
 
     grunt.registerTask (
         'build', 
