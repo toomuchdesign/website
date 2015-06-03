@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+    'use strict';
+
     var mozjpeg = require('imagemin-mozjpeg');
 
     // configure the tasks
@@ -293,4 +295,4 @@ module.exports = function(grunt) {
         'Watches the project for changes, automatically and exports static files.', 
         [ 'watch' ]
     );
-}
+};

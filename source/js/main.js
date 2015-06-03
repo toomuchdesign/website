@@ -1,10 +1,10 @@
 /*jslint browser: true*/
-/*global $, console, MBP*/
+/*global console, domready, smoothScroll, echo, imagesLoaded*/
 
 (function () {
 
     //Avoid accidental global variable declarations
-    "use strict";
+    'use strict';
 
     //Store reference to HTML            
     var html = document.documentElement;
@@ -82,7 +82,6 @@
                 please_retry: 'Please, try again.',
                 server_problems: 'The server us taking too Long to Respond.'
             },
-                cForm = document.getElementById( 'contact-form' ),
                 formName = document.getElementById( 'name' ),
                 formEmail = document.getElementById( 'email' ),
                 formMessage = document.getElementById( 'message' ),
@@ -90,7 +89,6 @@
                 formMail = document.getElementById( 'mail' ),           //formMail is just a honeypot
                 formAlert = document.getElementById( 'form-alert' ),
                 formSpinner = document.getElementById( 'form-spinner' );
-
 
             /* on Blur: Validate and return true/false */
             formName.addEventListener( 'blur', function() {
@@ -127,7 +125,7 @@
                     '&mail=' + encodeURIComponent( formMail.value ) +
                     '&email=' + encodeURIComponent( formEmail.value ) +
                     '&message=' + encodeURIComponent( formMessage.value ) +
-                    '&ajx=1' //Ajax flag for server processing
+                    '&ajx=1'; //Ajax flag for server processing
                     
                     //Disabled all text fields
                     formName.setAttribute( 'disabled', true );
@@ -136,7 +134,7 @@
 
                     //Cancel the submit button default behaviours
                     formSubmit.setAttribute( 'disabled', true );
-                    formSubmit.setAttribute( 'value', msg['sending'] );
+                    formSubmit.setAttribute( 'value', msg.sending );
 
                     //Show the loading spinner
                     formSpinner.style.opacity = 1;
@@ -154,24 +152,24 @@
                             var resp = JSON.parse( request.responseText );
                             console.log(resp);
 
-                            if( resp.sent == 1 ){
-                                formSubmit.setAttribute( 'value', msg['thanks'] );
+                            if( resp.sent === 1 ){
+                                formSubmit.setAttribute( 'value', msg.thanks );
                             } else {
                                 formAlert.innerHTML = resp.msg;
-                                formSubmit.setAttribute( 'value', msg['retry'] );
+                                formSubmit.setAttribute( 'value', msg.retry );
                             }
                         } else {
                             // We reached our target server, but it returned an error
-                            formAlert.innerHTML = msg['please_retry'];
-                            formSubmit.setAttribute( 'value', msg['retry'] );
+                            formAlert.innerHTML = msg.please_retry;
+                            formSubmit.setAttribute( 'value', msg.retry );
                         }
                         formSpinner.style.opacity = 0;
                     };
 
                     request.onerror = function() {
                         //There was a connection error of some sort
-                        formAlert.innerHTML = msg['please_retry'];
-                        formSubmit.setAttribute( 'value', msg['retry'] );
+                        formAlert.innerHTML = msg.please_retry;
+                        formSubmit.setAttribute( 'value', msg.retry );
                         formSpinner.style.opacity = 0;
                     };
 
@@ -185,7 +183,7 @@
         },
 
         validateField : function( field ){
-            if ( field.id == 'email' ) {
+            if ( field.id === 'email' ) {
                 //Regex again email format
                 if ( /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test( field.value )) {
                    field.previousElementSibling.style.opacity = 0;
@@ -193,7 +191,7 @@
                 }
             }
 
-            if ( field.id == 'name' || field.id == 'message' ) {
+            if ( field.id === 'name' || field.id === 'message' ) {
                 //Regex again empty spaces
                 if ( field.value && !/^\s*$/.test( field.value )) {
                    field.previousElementSibling.style.opacity = 0;
@@ -207,9 +205,10 @@
         }
         
     }; //End AC
-    
+
     //Ready event
     domready(function() {
         AC.onReady();
-    })
+    });
+
 })();
