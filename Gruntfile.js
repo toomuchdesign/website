@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         settings: {
             source: 'source',
             build: 'build',
-            static_files_pattern: [ 'img/**', '!img/works', 'fonts/**', 'files/**', 'scripts/**' ],
+            static_files_pattern: [ 'img/**', '!img/works', 'fonts/**', 'files/**', 'scripts/**', 'favicon.ico', 'apple-touch-icon.png' ],
             thumbnails: [ 'img/works' ],
             bower: 'bower_components',
         },
