@@ -235,6 +235,20 @@ module.exports = function(grunt) {
             },
         }, //end watch
 
+        browserSync: {
+            bsFiles: {
+                src : [
+                    './<%= settings.build %>/css/*.css',
+                    './<%= settings.build %>/js/*.js',
+                    './<%= settings.build %>/*.html'
+                ]
+            },
+            options: {
+                watchTask: true,
+                server: './<%= settings.build %>'
+            }
+        }, //end browserSync
+
     });
 
     // load the tasks
@@ -293,6 +307,6 @@ module.exports = function(grunt) {
     grunt.registerTask(
         'default',
         'Watches the project for changes, automatically and exports static files.', 
-        [ 'watch' ]
+        [ 'browserSync', 'watch' ]
     );
 };
