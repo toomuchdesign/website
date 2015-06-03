@@ -39,7 +39,7 @@ module.exports = function(grunt) {
                 src: [ '<%= settings.build %>/js/vendor/**' ]
             },
             
-        }, //end Clean
+        }, //end clean
 
         copy: {
             static_files: {
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                         filter: 'isFile',
                 }],
             },
-        }, //end Copy
+        }, //end copy
 
         imagemin: {
             options: {
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
                     '<%= settings.build %>/css/style.css': '<%= settings.source %>/less/style.less',
                 },
             },
-        }, //end Less
+        }, //end less
 
         autoprefixer: {
 
@@ -123,7 +123,7 @@ module.exports = function(grunt) {
                 },
                 src: '<%= settings.build %>/css/style.css',
             },
-        }, //end Autoprefixer
+        }, //end autoprefixer
 
         //Expose media queries style for old ie
         match_media: {
@@ -137,6 +137,19 @@ module.exports = function(grunt) {
                 }
             }
         }, //end Match media
+
+        //check JS for validation
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
+            },
+            all: [
+                'Gruntfile.js',
+                '<%= settings.source %>/js/*.js',
+                'test/spec/{,*/}*.js'
+            ]
+        }, //end jshint
 
         uglify: {
 
@@ -218,7 +231,7 @@ module.exports = function(grunt) {
                 files: [ 'js/vendor/*' ],
                 tasks: [ 'clean:javascript_vendor', 'copy:javascript_vendor' ],
             },
-        }, //end Watch
+        }, //end watch
 
     });
 
@@ -237,8 +250,8 @@ module.exports = function(grunt) {
     );
 
     grunt.registerTask (
-        'build_static_files', 
-        'Build static files.', 
+        'build_static_files',
+        'Build static files.',
         [ 'newer:clean:static_files',
           'newer:copy:static_files',
           //'newer:imagemin:compress_thumbnails',
@@ -246,16 +259,16 @@ module.exports = function(grunt) {
     );
 
     grunt.registerTask (
-        'build_markup_files', 
-        'Build HTML files.', 
+        'build_markup_files',
+        'Build HTML files.',
         [ 'clean:markup_files',
           'copy:markup_files',
            ]
     );
 
     grunt.registerTask (
-        'build_stylesheets', 
-        'Build Stylesheets.', 
+        'build_stylesheets',
+        'Build Stylesheets.',
         [ 'clean:stylesheets',
           'less:stylesheets',
           'autoprefixer:stylesheets',
@@ -263,9 +276,10 @@ module.exports = function(grunt) {
     );
 
     grunt.registerTask (
-        'build_javascript', 
-        'Build Javascript.', 
-        [ 'clean:javascript',             // Clean build JS files
+        'build_javascript',
+        'Build Javascript.',
+        [ 'jshint',
+          'clean:javascript',             // Clean build JS files
           'uglify:javascript_files',      // Uglify Project-related JS files and move them into build folder
           'uglify:bower_components',      // Uglify JS 3rd-party plugins and move them into build folder
           'concat:javascript_files',      // Join JS files in a single file
@@ -275,7 +289,7 @@ module.exports = function(grunt) {
     );
 
     grunt.registerTask(
-        'default', 
+        'default',
         'Watches the project for changes, automatically and exports static files.', 
         [ 'watch' ]
     );
