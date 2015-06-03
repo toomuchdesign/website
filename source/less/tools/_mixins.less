@@ -76,7 +76,7 @@
  * http://css-tricks.com/centering-in-the-unknown/
 ----------------------------------------------- */
 .valign-ghost-p() { //Parent (any width and height)
-    
+
     &:before { //The ghost, nudged to maintain perfect centering
         content: '';
         display: inline-block;
@@ -87,17 +87,17 @@
 }
 
 .valign-ghost-c() { //Child (any width and height)
-  display: inline-block;
-  vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
 /* Display: inline-block hack for ie7
 ----------------------------------------------- */
 .dib-ie7() {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
 }
 
 
@@ -106,16 +106,16 @@
 ----------------------------------------------- */
 
 .break-words() {
-  -ms-word-break: break-all;
-  /*word-break: break-all;*/
+    -ms-word-break: break-all;
+    /*word-break: break-all;*/
 
-  /* Non standard for webkit */
-  word-break: break-word;
+    /* Non standard for webkit */
+    word-break: break-word;
 
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 
 
@@ -235,7 +235,7 @@
 .sticky-body (@footer-height: 50px, @footer-top-padding: 0) {
     @bottom-padding : @footer-height + @footer-top-padding;
     margin: 0 0 @bottom-padding;
- }
+}
 
 .sticky-footer (@footer-height: 50px, @footer-top-padding: 0) {
     position: absolute;
@@ -269,7 +269,6 @@
  */
 
 .grid-float-clearing(@old-columns-number : 1, @columns-number : 1, @floating-direction: left) {
-  
     .gfc-add-clear();
     .gfc-clear-reset();
 }

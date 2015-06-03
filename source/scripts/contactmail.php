@@ -2,8 +2,7 @@
 header('content-type: application/json; charset=utf-8');
 
 function is_valid_callback($subject) {
-    $identifier_syntax
-      = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*+$/u';
+    $identifier_syntax = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*+$/u';
 
     $reserved_words = array('break', 'do', 'instanceof', 'typeof', 'case',
       'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue',
@@ -18,11 +17,11 @@ function is_valid_callback($subject) {
 }
 
 function is_ajax_request() {
-	//ServerSide if ajax Check
-	//return ( (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') ) ? true : false;
-	
-	//Check if Ajax request reading a value of the GET
-	return substr($_GET['ajx'], 0, 2) == 1 ? true : false;
+    //ServerSide if ajax Check
+    //return ( (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') ) ? true : false;
+    
+    //Check if Ajax request reading a value of the GET
+    return substr($_GET['ajx'], 0, 2) == 1 ? true : false;
 }
 
 function isValidEmail($email){
@@ -30,28 +29,28 @@ function isValidEmail($email){
 }
 
 function isValidString($str){
-	return (strlen($str) > 2 ? true : false);
+    return (strlen($str) > 2 ? true : false);
 }
 
 $email_to = "hi@andreacarraro.it";
 
 //Get vars end cut them
 if ( is_ajax_request() ) {
-	$name = substr($_GET['name'], 0, 50);
-	$spam = substr($_GET['mail'], 0, 50);
-	$email = substr($_GET['email'], 0, 50);
-	$comment = urldecode(substr($_GET['message'], 0, 1000));
+    $name = substr($_GET['name'], 0, 50);
+    $spam = substr($_GET['mail'], 0, 50);
+    $email = substr($_GET['email'], 0, 50);
+    $comment = urldecode(substr($_GET['message'], 0, 1000));
 } else {
-	$name = substr($_POST['name'], 0, 50);
-	$spam = substr($_POST['mail'], 0, 50);
-	$email = substr($_POST['email'], 0, 50);
-	$comment = substr($_POST['message'], 0, 1000);
+    $name = substr($_POST['name'], 0, 50);
+    $spam = substr($_POST['mail'], 0, 50);
+    $email = substr($_POST['email'], 0, 50);
+    $comment = substr($_POST['message'], 0, 1000);
 }
 
 $message = "Name: $name \ne-mail: $email \n\nComment: $comment";
 $headers = 'From: '.$email. "\r\n" .
-			'Reply-To: '.$email. "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
+            'Reply-To: '.$email. "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
 
 //Set Reply message according to Language
 $reply_message = "Hi $name,
@@ -71,42 +70,42 @@ $comment
 andreacarraro.it | hi@andreacarraro.it";
 
 $reply_headers = 'From: hi@andreacarraro.it' . "\r\n" .
-			'Reply-To: hi@andreacarraro.it' . "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
+            'Reply-To: hi@andreacarraro.it' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
 
 $validation = 0;
 
 //Do Validation
 if ( isValidEmail($email) && isValidString($name) && isValidString($message) && $spam == '' ) {
-	$validation = 1;
+    $validation = 1;
 }
 
 if ($validation == 1) {
-	//If validation and mail OK
-	if (	mail("$email_to",
-				"Message sent from andreacarraro.it",
-				$message,
-				$headers) ){
-	 
-		$data['sent'] = '1';
-		$data['msg'] = 'Email sent!';
-		
-		//Send a copy to writer
-		mail("$email",
-			"andreacarraro.it: message received!",
-			$reply_message,
-			$reply_headers);
+    //If validation and mail OK
+    if (    mail("$email_to",
+                "Message sent from andreacarraro.it",
+                $message,
+                $headers) ){
+     
+        $data['sent'] = '1';
+        $data['msg'] = 'Email sent!';
+        
+        //Send a copy to writer
+        mail("$email",
+            "andreacarraro.it: message received!",
+            $reply_message,
+            $reply_headers);
 
-	//if mail KO
-	} else {
-	$data['sent'] = '0';
-	$data['msg'] = 'Looks like we are having some server troubles. Please, try again.';
-	}
-	
-	//if validation KO
+    //if mail KO
+    } else {
+    $data['sent'] = '0';
+    $data['msg'] = 'Looks like we are having some server troubles. Please, try again.';
+    }
+    
+    //if validation KO
 } else  {
-	$data['sent'] = '0';
-	$data['msg'] = 'I found some validation problems. Please, check your inputs again.';
+    $data['sent'] = '0';
+    $data['msg'] = 'I found some validation problems. Please, check your inputs again.';
 }
 
 //Additional debug data
@@ -124,24 +123,24 @@ $json = json_encode($data);
 //if JSON or JSONP request
 if( is_ajax_request() ){
 
-	// JSON if no callback
-	if( ! isset($_GET['callback']))
-		exit($json);
+    // JSON if no callback
+    if( ! isset($_GET['callback']))
+        exit($json);
 
-	// JSONP if valid callback
-	if(is_valid_callback($_GET['callback']))
-		exit("{$_GET['callback']}($json)");
-		
+    // JSONP if valid callback
+    if(is_valid_callback($_GET['callback']))
+        exit("{$_GET['callback']}($json)");
+        
 }
 //Users without JS not doing Ajax calls.
 /*else {
-	//Else.. redirect in case of request without JS
-	if( $data['sent'] == '1') {
-		header("Location: http://www.andreacarraro.it/thankyou.html");
-	}
-	if( $data['sent'] == '0') {
-		header("Location: http://www.andreacarraro.it/error.html");
-	}
+    //Else.. redirect in case of request without JS
+    if( $data['sent'] == '1') {
+        header("Location: http://www.andreacarraro.it/thankyou.html");
+    }
+    if( $data['sent'] == '0') {
+        header("Location: http://www.andreacarraro.it/error.html");
+    }
 }*/
 
 // Otherwise, bad request

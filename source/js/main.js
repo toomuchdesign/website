@@ -2,22 +2,21 @@
 /*global $, console, MBP*/
 
 (function () {
-    
+
     //Avoid accidental global variable declarations
     "use strict";
-        
+
     //Store reference to HTML            
     var html = document.documentElement;
 
     var AC = {
-        
         onReady : function () {
             
             //Go on and set up website
             AC.setUpSite();
 
         },
-        
+
         setUpSite : function () {
             console.log('AC.setUpSite');
 
@@ -108,10 +107,10 @@
             
             /* On form submit... */
             formSubmit.addEventListener( 'click', function(e) {
-            
+
                 //stop the form from being submitted
                 e.preventDefault();
-            
+
                 var validation = true;
 
                 //Trigger complete form validation
@@ -181,8 +180,8 @@
                     request.send();
                     
                 } // end if Validation
-                
-            }); 
+
+            });
         },
 
         validateField : function( field ){
