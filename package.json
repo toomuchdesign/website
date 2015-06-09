@@ -11,7 +11,6 @@
     "grunt-contrib-clean": "0.6.*",
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-copy": "0.8.*",
-    "grunt-contrib-imagemin": "0.9.*",
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-contrib-less": "1.0.*",
     "grunt-contrib-uglify": "0.9.*",
@@ -19,7 +18,7 @@
     "grunt-match-media": "0.1.*",
     "grunt-newer": "1.1.*",
     "grunt-notify": "*",
-    "imagemin-mozjpeg": "5.1.*",
+    "grunt-responsive-images": "^0.1.6",
     "jshint-stylish": "^2.0.0",
     "load-grunt-tasks": "^3.2.0"
   },

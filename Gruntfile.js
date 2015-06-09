@@ -2,8 +2,6 @@ module.exports = function(grunt) {
 
     'use strict';
 
-    var mozjpeg = require('imagemin-mozjpeg');
-
     // configure the tasks
     grunt.initConfig({
 
@@ -12,7 +10,7 @@ module.exports = function(grunt) {
             source: 'source',
             build: 'build',
             static_files_pattern: [ 'img/**', '!img/works', 'fonts/**', 'files/**', 'scripts/**', 'favicon.ico', 'apple-touch-icon.png' ],
-            thumbnails: [ 'img/works' ],
+            thumbnails: [ 'img/works/' ],
             bower: 'bower_components',
         },
 
@@ -22,6 +20,10 @@ module.exports = function(grunt) {
                 expand: true,                                // Enable dynamic expansion.
                 cwd: '<%= settings.build %>',                // Src matches are relative to this path.
                 src: '<%= settings.static_files_pattern %>', // Actual pattern(s) to match.
+            },
+
+            thumbnails : {
+                src: [ '<%= settings.build %>/<%= settings.thumbnails %>/*.jpg' ],
             },
 
             markup_files: {
@@ -46,52 +48,89 @@ module.exports = function(grunt) {
         copy: {
             static_files: {
                 files: [{
-                        // Move static into build folder
-                        expand: true,                                // Enable dynamic expansion.
-                        cwd: '<%= settings.source %>',               // Src matches are relative to this path.
-                        src: '<%= settings.static_files_pattern %>', // Actual pattern(s) to match.
-                        dest: '<%= settings.build %>',               // Destination path prefix.
-                        filter: 'isFile',
+                    // Move static into build folder
+                    expand: true,                                // Enable dynamic expansion.
+                    cwd: '<%= settings.source %>',               // Src matches are relative to this path.
+                    src: '<%= settings.static_files_pattern %>', // Actual pattern(s) to match.
+                    dest: '<%= settings.build %>',               // Destination path prefix.
+                    filter: 'isFile',
+                }],
+            },
+
+            thumbnails: {
+                files: [{
+                    // Move thumbnails into build folder
+                    expand: true,
+                    cwd: '<%= settings.source %>',
+                    src: [ '<%= settings.thumbnails %>/*.jpg' ],
+                    dest: '<%= settings.build %>',
                 }],
             },
 
             markup_files: {
                 files: [{
-                        // Move static into build folder
-                        expand: true,
-                        cwd: '<%= settings.source %>', 
-                        src: [ '*.html' ],
-                        dest: '<%= settings.build %>',
-                        filter: 'isFile',
+                    // Move static into build folder
+                    expand: true,
+                    cwd: '<%= settings.source %>', 
+                    src: [ '*.html' ],
+                    dest: '<%= settings.build %>',
+                    filter: 'isFile',
                 }],
             },
 
             javascript_vendor: {
                 files: [{
-                        // Move vendor files which need to be served separately
-                        expand: true,                              // Enable dynamic expansion.
-                        cwd: '<%= settings.source %>/js/vendor/',  // Src matches are relative to this path.
-                        src: [ '**' ],                             // Actual pattern(s) to match.
-                        dest: '<%= settings.build %>/js/vendor/',  // Destination path prefix.
-                        filter: 'isFile',
+                    // Move vendor files which need to be served separately
+                    expand: true,                              // Enable dynamic expansion.
+                    cwd: '<%= settings.source %>/js/vendor/',  // Src matches are relative to this path.
+                    src: [ '**' ],                             // Actual pattern(s) to match.
+                    dest: '<%= settings.build %>/js/vendor/',  // Destination path prefix.
+                    filter: 'isFile',
                 }],
             },
         }, //end copy
 
-        imagemin: {
+        responsive_images: {
+            //See: https://github.com/andismith/grunt-responsive-images
+            //See: http://imagemagick.org
             options: {
-                optimizationLevel: 3,
-                use: [mozjpeg({quality: 75})]
+                quality: 85,
+                engine: 'im',
             },
-            compress_thumbnails: {
+            small: {
+                options: {
+                    sizes: [{ width: 79 }]
+                },
                 files: [{
                     expand: true,
-                    cwd: '<%= settings.build %>/<%= settings.thumbnails %>',
-                    src: ['*.jpg'],
-                    dest: '<%= settings.build %>/<%= settings.thumbnails %>'
-                }],
-            }
-        }, //end imagemin
+                    cwd: '<%= settings.build %>',
+                    src: [ '<%= settings.thumbnails %>/*_small.jpg' ],
+                    dest: '<%= settings.build %>',
+                }]
+            },
+            large: {
+                options: {
+                    sizes: [{ width: 201 }]
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.build %>',
+                    src: [ '<%= settings.thumbnails %>/*_large.jpg' ],
+                    dest: '<%= settings.build %>',
+                }]
+            },
+            full: {
+                options: {
+                    sizes: [{ width: 290 }]
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.build %>',
+                    src: [ '<%= settings.thumbnails %>/*_full.jpg' ],
+                    dest: '<%= settings.build %>',
+                }]
+            },
+        }, // responsive_images
 
         less: {
             options: {
@@ -101,7 +140,6 @@ module.exports = function(grunt) {
 
             stylesheets: {
                 options: {
-                    //modifyVars : {'varName': 'varValue'},
                     sourceMap: true,
                     sourceMapFilename: '<%= settings.build %>/css/style.css.map',
                     sourceMapURL: 'style.css.map',
@@ -259,6 +297,7 @@ module.exports = function(grunt) {
         'Build the whole project.',
         [ 'build_static_files',
           'build_markup_files',
+          'build_thumbnails',
           'build_stylesheets',
           'match_media:old_ie',
           'build_javascript',
@@ -270,7 +309,15 @@ module.exports = function(grunt) {
         'Build static files.',
         [ 'newer:clean:static_files',
           'newer:copy:static_files',
-          //'newer:imagemin:compress_thumbnails',
+           ]
+    );
+
+    grunt.registerTask (
+        'build_thumbnails',
+        '',
+        [ 'clean:thumbnails',
+          'copy:thumbnails',
+          'responsive_images',
            ]
     );
 
