@@ -68,7 +68,8 @@
             width: 100%;
         }
 
-        >img {
+        img,
+        > picture {
             
             //Keep work image sticked to thumbnails borders
             position: absolute;
@@ -85,7 +86,8 @@
         //This class is added when img is lazy loaded.
         &.loaded {
 
-            >img {
+            img,
+            >picture {
 
                 //Fade in image when thumbnail is actually loaded
                 opacity: 1;

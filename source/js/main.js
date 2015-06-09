@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*global console, domready, smoothScroll, echo, imagesLoaded*/
+/*global console, domready, smoothScroll*/
 
 (function () {
 
@@ -37,7 +37,17 @@
 
         initializeLazyLoadingImages : function () {
 
+            //See: https://github.com/aFarkas/lazysizes
+            //Image loaded event
+            document.addEventListener( 'lazybeforeunveil', function(e){
+                //console.log(e.target);
+                //Get .work__thumbnail element
+                e.target.parentNode.parentNode.classList.add( 'loaded' );
+                //e.target.parentNode.classList.add( 'loaded' );
+            });
+
             //https://github.com/toddmotto/echo
+            /*
             echo.init({
                 offset: 0,
                 unload: false,
@@ -59,6 +69,7 @@
                     }
                 }
             });
+            */
         },
 
         initializePlaceholdersFallback : function () {

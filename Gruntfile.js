@@ -99,7 +99,7 @@ module.exports = function(grunt) {
             },
             small: {
                 options: {
-                    sizes: [{ width: 79 }]
+                    sizes: [{ name: 's', width: 79 }]
                 },
                 files: [{
                     expand: true,
@@ -110,7 +110,7 @@ module.exports = function(grunt) {
             },
             large: {
                 options: {
-                    sizes: [{ width: 201 }]
+                    sizes: [{ name: 's', width: 201 }]
                 },
                 files: [{
                     expand: true,
@@ -121,7 +121,7 @@ module.exports = function(grunt) {
             },
             full: {
                 options: {
-                    sizes: [{ width: 290 }]
+                    sizes: [{ name: 's', width: 290 }]
                 },
                 files: [{
                     expand: true,
@@ -130,7 +130,30 @@ module.exports = function(grunt) {
                     dest: '<%= settings.build %>',
                 }]
             },
-        }, // responsive_images
+        }, // end responsive_images
+
+        responsive_images_extender: {
+            target: {
+                options: {
+                    srcset: [
+                        {suffix: '-s', value: '320w'},
+                    ],
+                    sizes: [{
+                        selector: '.lazyload',
+                        sizeList: [{
+                            cond: 'min-width: 770px',
+                            size: '65vw'
+                        },{
+                            cond: 'default',
+                            size: '100vw'
+                        }],
+                    }],
+                },
+                files: {
+                    '<%= settings.build %>/index.html': '<%= settings.build %>/index.html',
+                },
+            }
+        }, // end responsive_images_extender
 
         less: {
             options: {
@@ -211,8 +234,10 @@ module.exports = function(grunt) {
             bower_components: {
                 files: {
                     '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
-                                                                '<%= settings.bower %>/echojs/dist/echo.js',
-                                                                '<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
+                                                                //'<%= settings.bower %>/echojs/dist/echo.js',
+                                                                //'<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
+                                                                '<%= settings.bower %>/lazysizes/lazysizes.js',
+                                                                '<%= settings.bower %>/picturefill/dist/picturefill.js',
                                                                 '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
                                                                 '<%= settings.bower %>/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
                                                                 ],
@@ -326,6 +351,7 @@ module.exports = function(grunt) {
         'Build HTML files.',
         [ 'clean:markup_files',
           'copy:markup_files',
+          //'responsive_images_extender',
            ]
     );
 
@@ -352,8 +378,15 @@ module.exports = function(grunt) {
     );
 
     grunt.registerTask(
-        'default',
-        'Watches the project for changes, automatically and exports static files.', 
+        'sync',
+        'The same of default task with addition of browserSync aid.', 
         [ 'browserSync', 'watch' ]
     );
+
+    grunt.registerTask(
+        'default',
+        'Watches the project for changes, automatically and exports static files.', 
+        [ 'watch' ]
+    );
+
 };
