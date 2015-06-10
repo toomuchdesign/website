@@ -37,15 +37,6 @@
 
         initializeLazyLoadingImages : function () {
 
-            //See: https://github.com/aFarkas/lazysizes
-            //Image loaded event
-            document.addEventListener( 'lazybeforeunveil', function(e){
-                //console.log(e.target);
-                //Get .work__thumbnail element
-                e.target.parentNode.parentNode.classList.add( 'loaded' );
-                //e.target.parentNode.classList.add( 'loaded' );
-            });
-
             //https://github.com/toddmotto/echo
             /*
             echo.init({

@@ -68,8 +68,7 @@
             width: 100%;
         }
 
-        img,
-        > picture {
+        img {
 
             //Keep work image sticked to thumbnails borders
             position: absolute;
@@ -81,14 +80,9 @@
             //Hide image for a funny fade in effect on image load
             opacity: 0;
             transition: opacity .5s ease-in-out;
-        }
-        
-        //This class is added when img is lazy loaded.
-        &.loaded {
 
-            img,
-            > picture {
-
+            //This class is added when img is lazy loaded.
+            &.lazyloaded {
                 //Fade in image when thumbnail is actually loaded
                 opacity: 1;
                 height: auto;
