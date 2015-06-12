@@ -257,7 +257,7 @@ module.exports = function(grunt) {
                                                             ]
                 }
             },
-        }, //end uglify
+        }, //end concat
 
         watch: {
 
