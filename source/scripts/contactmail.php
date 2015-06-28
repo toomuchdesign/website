@@ -87,7 +87,7 @@ if ($validation == 1) {
                 $message,
                 $headers) ){
      
-        $data['sent'] = '1';
+        $data['sent'] = 1;
         $data['msg'] = 'Email sent!';
         
         //Send a copy to writer
@@ -98,13 +98,13 @@ if ($validation == 1) {
 
     //if mail KO
     } else {
-    $data['sent'] = '0';
+    $data['sent'] = 0;
     $data['msg'] = 'Looks like we are having some server troubles. Please, try again.';
     }
     
     //if validation KO
 } else  {
-    $data['sent'] = '0';
+    $data['sent'] = 0;
     $data['msg'] = 'I found some validation problems. Please, check your inputs again.';
 }
 
