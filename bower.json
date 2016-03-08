@@ -15,7 +15,7 @@
   ],
   "devDependencies": {
     "domready": "~1.0.8",
-    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git#~5.3.7",
+    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git#~9.1.1",
     "iOS-Orientationchange-Fix": "https://github.com/scottjehl/iOS-Orientationchange-Fix.git",
     "lazysizes": "~1.1.3",
     "picturefill": "~2.3.1"
