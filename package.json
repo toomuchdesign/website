@@ -4,6 +4,14 @@
   "author": "Andrea Carraro",
   "repository": "https://github.com/toomuchdesign/website.git",
   "homepage": "http://www.andreacarraro.it",
+  "scripts": {
+    "test": "grunt jshint",
+    "setup": "npm install && bower install",
+    "build": "npm run setup && grunt build",
+    "preversion": "npm test",
+    "version": "git add package.json",
+    "postversion": "git push && git push --tags"
+  },
   "devDependencies": {
     "grunt": "~0.4.x",
     "grunt-autoprefixer": "3.0.*",
