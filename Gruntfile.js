@@ -233,14 +233,15 @@ module.exports = function(grunt) {
             //Join all Bower dependencies
             bower_components: {
                 files: {
-                    '<%= settings.build %>/js/plugins.js': [    '<%= settings.bower %>/domready/ready.js',
-                                                                //'<%= settings.bower %>/echojs/dist/echo.js',
-                                                                //'<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
-                                                                '<%= settings.bower %>/lazysizes/lazysizes.js',
-                                                                '<%= settings.bower %>/picturefill/dist/picturefill.js',
-                                                                '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
-                                                                '<%= settings.bower %>/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
-                                                                ],
+                    '<%= settings.build %>/js/plugins.js': [ 
+                        '<%= settings.bower %>/domready/ready.js',
+                        //'<%= settings.bower %>/echojs/dist/echo.js',
+                        //'<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
+                        '<%= settings.bower %>/lazysizes/lazysizes.js',
+                        '<%= settings.bower %>/picturefill/dist/picturefill.js',
+                        '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
+                        '<%= settings.bower %>/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
+                    ],
                 }
             },
 
@@ -252,9 +253,10 @@ module.exports = function(grunt) {
                     sourceMap: true,
                 },
                 files: {
-                    '<%= settings.build %>/js/global.js': [ '<%= settings.build %>/js/plugins.js',
-                                                            '<%= settings.build %>/js/main.js',
-                                                            ]
+                    '<%= settings.build %>/js/global.js': [
+                        '<%= settings.build %>/js/plugins.js',
+                        '<%= settings.build %>/js/main.js',
+                    ]
                 }
             },
         }, //end concat
