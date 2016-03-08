@@ -380,7 +380,7 @@ module.exports = function(grunt) {
     grunt.registerTask(
         'sync',
         'The same of default task with addition of browserSync aid.', 
-        [ 'browserSync', 'watch' ]
+        [ 'build', 'browserSync', 'watch' ]
     );
 
     grunt.registerTask(
