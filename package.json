@@ -7,7 +7,7 @@
   "scripts": {
     "test": "grunt jshint",
     "setup": "npm install && bower install",
-    "build": "npm run setup && grunt build",
+    "build": "grunt build",
     "preversion": "npm test",
     "version": "git add package.json",
     "postversion": "git push && git push --tags"
