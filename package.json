@@ -6,7 +6,7 @@
   "homepage": "http://www.andreacarraro.it",
   "scripts": {
     "test": "grunt jshint",
-    "setup": "npm install && bower install",
+    "setup": "npm install",
     "build": "grunt build",
     "preversion": "npm test",
     "version": "git add package.json",
@@ -31,5 +31,11 @@
     "jshint-stylish": "^2.0.0",
     "load-grunt-tasks": "^3.2.0"
   },
-  "engine": "node >= 0.10"
+  "engine": "node >= 0.10",
+  "dependencies": {
+    "smooth-scroll": "github:cferdinandi/smooth-scroll#v9.1.1",
+    "domready": "^1.0.8",
+    "lazysizes": "^1.5.0",
+    "picturefill": "^2.3.1"
+  }
 }

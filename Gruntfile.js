@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             build: 'build',
             static_files_pattern: [ 'cv/**', 'img/**', '!img/works', 'fonts/**', 'files/**', 'scripts/**', 'favicon.ico', 'apple-touch-icon.png' ],
             thumbnails: [ 'img/works/' ],
-            bower: 'bower_components',
+            node_modules: 'node_modules',
         },
 
         clean: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             javascript_vendor: {
                 src: [ '<%= settings.build %>/js/vendor/**' ]
             },
-            
+
         }, //end clean
 
         copy: {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
                 files: [{
                     // Move static into build folder
                     expand: true,
-                    cwd: '<%= settings.source %>', 
+                    cwd: '<%= settings.source %>',
                     src: [ '*.html' ],
                     dest: '<%= settings.build %>',
                     filter: 'isFile',
@@ -220,7 +220,7 @@ module.exports = function(grunt) {
                 sourceMap: true,
             },
 
-            //Uglify all .js files in js folder except for files beginning with '_' 
+            //Uglify all .js files in js folder except for files beginning with '_'
             javascript_files: {
                 files: [{
                     expand: true,
@@ -230,17 +230,14 @@ module.exports = function(grunt) {
                 }],
             },
 
-            //Join all Bower dependencies
-            bower_components: {
+            //Join all client dependencies
+            client_components: {
                 files: {
-                    '<%= settings.build %>/js/plugins.js': [ 
-                        '<%= settings.bower %>/domready/ready.js',
-                        //'<%= settings.bower %>/echojs/dist/echo.js',
-                        //'<%= settings.bower %>/imagesloaded/imagesloaded.pkgd.js',
-                        '<%= settings.bower %>/lazysizes/lazysizes.js',
-                        '<%= settings.bower %>/picturefill/dist/picturefill.js',
-                        '<%= settings.bower %>/smooth-scroll/dist/js/smooth-scroll.js',
-                        '<%= settings.bower %>/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
+                    '<%= settings.build %>/js/plugins.js': [
+                        '<%= settings.node_modules %>/domready/ready.js',
+                        '<%= settings.node_modules %>/lazysizes/lazysizes.js',
+                        '<%= settings.node_modules %>/picturefill/dist/picturefill.js',
+                        '<%= settings.node_modules %>/smooth-scroll/dist/js/smooth-scroll.js',
                     ],
                 }
             },
@@ -320,7 +317,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.registerTask (
-        'build', 
+        'build',
         'Build the whole project.',
         [ 'build_static_files',
           'build_markup_files',
@@ -372,7 +369,7 @@ module.exports = function(grunt) {
         [ 'jshint',
           'clean:javascript',             // Clean build JS files
           'uglify:javascript_files',      // Uglify Project-related JS files and move them into build folder
-          'uglify:bower_components',      // Uglify JS 3rd-party plugins and move them into build folder
+          'uglify:client_components',      // Uglify JS 3rd-party plugins and move them into build folder
           'concat:javascript_files',      // Join JS files in a single file
           'clean:javascript_vendor',      // Clean build JS Vendor folder
           'copy:javascript_vendor',       // Copy files into build JS Vendor folder
@@ -381,13 +378,13 @@ module.exports = function(grunt) {
 
     grunt.registerTask(
         'sync',
-        'The same of default task with addition of browserSync aid.', 
+        'The same of default task with addition of browserSync aid.',
         [ 'build', 'browserSync', 'watch' ]
     );
 
     grunt.registerTask(
         'default',
-        'Watches the project for changes, automatically and exports static files.', 
+        'Watches the project for changes, automatically and exports static files.',
         [ 'watch' ]
     );
 
