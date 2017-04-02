@@ -1,31 +1,30 @@
 /*jslint browser: true*/
-/*global console, domready, smoothScroll*/
+/*global domready, smoothScroll*/
 
 (function () {
 
     //Avoid accidental global variable declarations
     'use strict';
 
-    //Store reference to HTML            
+    //Store reference to HTML
     var html = document.documentElement;
 
     var AC = {
         onReady : function () {
-            
+
             //Go on and set up website
             AC.setUpSite();
 
         },
 
         setUpSite : function () {
-            console.log('AC.setUpSite');
+            // console.log('AC.setUpSite');
 
             //Set html replace html no-js with js class
             html.className = document.documentElement.className.replace( 'no-js', 'js' );
 
             AC.initializePlaceholdersFallback();
             AC.initializeSmoothScroll();
-            AC.initializeLazyLoadingImages();
             AC.initializeContactForm();
         },
 
@@ -39,34 +38,6 @@
                     location.hash = anchor;
                 }
             });
-        },
-
-        initializeLazyLoadingImages : function () {
-
-            //https://github.com/toddmotto/echo
-            /*
-            echo.init({
-                offset: 0,
-                unload: false,
-                callback: function( element, op ) {
-
-                    //Add loading class to lazy loading image being loaded
-                    element.parentNode.classList.add( 'loading' );
-
-                    if( op === 'load' ) {
-
-                        //Detect truly image loaded event
-                        //https://github.com/desandro/imagesloaded
-                        imagesLoaded( element, function( imagesLoadedObj ) {
-                            imagesLoadedObj.elements[0].parentNode.classList.remove( 'loading' );
-                            imagesLoadedObj.elements[0].parentNode.classList.add( 'loaded' );
-                        });
-                    } else {
-                        element.parentNode.classList.remove( 'loaded' );
-                    }
-                }
-            });
-            */
         },
 
         initializePlaceholdersFallback : function () {
@@ -110,7 +81,7 @@
             formMessage.addEventListener( 'blur', function() {
                 AC.validateField( this );
             });
-            
+
             /* On form submit... */
             formSubmit.addEventListener( 'click', function(e) {
 
@@ -124,7 +95,7 @@
                                 AC.validateField( formName ) *
                                 AC.validateField( formEmail ) *
                                 AC.validateField( formMessage );
-                        
+
                 if ( validation && !formMail.value ) {
 
                     //Organize the data properly
@@ -134,7 +105,7 @@
                     '&email=' + encodeURIComponent( formEmail.value ) +
                     '&message=' + encodeURIComponent( formMessage.value ) +
                     '&ajx=1'; //Ajax flag for server processing
-                    
+
                     //Disabled all text fields
                     formName.setAttribute( 'disabled', true );
                     formMail.setAttribute( 'disabled', true );
@@ -184,7 +155,7 @@
                     //console.log( 'Sending' );
                     //console.log( data );
                     request.send();
-                    
+
                 } // end if Validation
 
             });
@@ -211,7 +182,7 @@
             field.previousElementSibling.style.opacity = 1;
             return false;
         }
-        
+
     }; //End AC
 
     //Ready event
