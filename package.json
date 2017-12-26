@@ -4,9 +4,10 @@
   "author": "Andrea Carraro",
   "repository": "https://github.com/toomuchdesign/website.git",
   "homepage": "http://www.andreacarraro.it",
+  "version": "1.0.0",
   "scripts": {
     "test": "grunt jshint",
-    "setup": "npm install",
+    "start": "grunt sync",
     "build": "grunt build",
     "preversion": "npm test",
     "version": "git add package.json",
