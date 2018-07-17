@@ -38,6 +38,6 @@
     "domready": "^1.0.8",
     "lazysizes": "^1.5.0",
     "picturefill": "^2.3.1",
-    "smooth-scroll": "github:cferdinandi/smooth-scroll#v9.1.1"
+    "smooth-scroll": "^14.2.1"
   }
 }

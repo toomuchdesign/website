@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*global domready, smoothScroll*/
+/*global domready, SmoothScroll*/
 
 (function () {
 
@@ -29,15 +29,17 @@
         },
 
         initializeSmoothScroll : function () {
-
             //https://github.com/cferdinandi/smooth-scroll
-            smoothScroll.init({
-                updateURL: false,
-                callback: function (anchor) {
-                    // Close offcanvas menu after scroll (Thanks to Martina bugfinder!)
-                    location.hash = anchor;
-                }
+            new SmoothScroll('a[data-scroll]', {
+              updateURL: false,
+              emitEvents: true,
             });
+
+            document.addEventListener('scrollStop', AC.closeOffCanvasMenuAfterScroll, false);
+        },
+
+        closeOffCanvasMenuAfterScroll : function (event) {
+          location.hash = event.detail.toggle.hash;
         },
 
         initializePlaceholdersFallback : function () {
