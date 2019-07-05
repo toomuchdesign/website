@@ -35,7 +35,7 @@
         margin-top: @global-gutter--small;
     }
 
-    &__preview { 
+    &__preview {
         &:extend(.clear all);
 
         clear: both;
@@ -43,7 +43,7 @@
     }
 
     &__thumbnail {
-        
+
         position: relative;
         float: left;
         overflow: hidden;
@@ -54,7 +54,7 @@
 
         background-color: darken( @global-background, 8% );
         box-shadow: @global-shadow;
-        
+
 
         &--small {
             width: 27%;
@@ -69,7 +69,6 @@
         }
 
         img {
-
             //Keep work image sticked to thumbnails borders
             position: absolute;
             top: 0;
@@ -81,11 +80,9 @@
             opacity: 0;
             transition: opacity .5s ease-in-out;
 
-            //This class is added when img is lazy loaded.
+            //Show picture when img is lazy loaded or when JS not enabled.
             &.lazyloaded {
-                //Fade in image when thumbnail is actually loaded
-                opacity: 1;
-                height: auto;
+              opacity: 1;
             }
         }
     }
