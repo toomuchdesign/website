@@ -201,19 +201,6 @@ module.exports = function(grunt) {
             }
         }, //end Match media
 
-        //check JS for validation
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-            },
-            all: [
-                'Gruntfile.js',
-                '<%= settings.source %>/js/*.js',
-                'test/spec/{,*/}*.js'
-            ]
-        }, //end jshint
-
         uglify: {
 
             options: {
@@ -366,8 +353,7 @@ module.exports = function(grunt) {
     grunt.registerTask (
         'build_javascript',
         'Build Javascript.',
-        [ 'jshint',
-          'clean:javascript',             // Clean build JS files
+        [ 'clean:javascript',             // Clean build JS files
           'uglify:javascript_files',      // Uglify Project-related JS files and move them into build folder
           'uglify:client_components',      // Uglify JS 3rd-party plugins and move them into build folder
           'concat:javascript_files',      // Join JS files in a single file
