@@ -75,14 +75,13 @@
             right: 0;
             left: 0;
             height: 100%;
+            transition: opacity .5s ease-in-out;
+            opacity: 1;
 
             //Hide image for a funny fade in effect on image load
-            opacity: 0;
-            transition: opacity .5s ease-in-out;
-
-            //Show picture when img is lazy loaded or when JS not enabled.
-            &.lazyloaded {
-              opacity: 1;
+            &.lazyload {
+              opacity: 0;
+              height: auto;
             }
         }
     }
