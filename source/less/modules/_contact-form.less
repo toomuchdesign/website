@@ -1,75 +1,72 @@
-.contact-form{
+.contact-form {
+  margin: 0 -@global-gutter--small / 2;
 
-    margin: 0 -@global-gutter--small/2;
-    
-    &__element {
-        position: relative;
-        padding: @global-gutter--small @global-gutter--small/2 0 @global-gutter--small/2;
-        display: block;
-        clear: both;
+  &__element {
+    position: relative;
+    padding: @global-gutter--small @global-gutter--small / 2 0
+      @global-gutter--small / 2;
+    display: block;
+    clear: both;
+  }
+
+  &__label {
+    display: none;
+    padding: 5px;
+
+    .no-placeholder & {
+      display: block;
     }
+  }
 
-    &__label {
-        display: none;
-        padding: 5px;
+  &__button {
+    float: right;
+  }
 
-        .no-placeholder & {
-            display: block;
-        }
+  &__error {
+    position: absolute;
+    bottom: @global-gutter--small;
+    right: @global-gutter--small / 2 + 10px;
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+    //Steal some input space at the end of its related input element
+    + input {
+      padding-right: 35px;
     }
+  }
 
-    &__button {
-        float: right;
+  &__alert {
+    clear: both;
+    padding-top: @global-gutter--small;
+  }
+
+  &__spinner {
+    float: right;
+    margin-top: @global-gutter--small;
+    margin-right: @global-gutter--small;
+    opacity: 0;
+
+    animation: spin 1s linear infinite;
+    transition: opacity 0.25s ease;
+
+    @keyframes spin {
+      from {
+        transform: rotate(-360deg);
+        //transform-origin: 50% 50%;
+      }
+      to {
+        transform: rotate(0deg);
+        //transform-origin: 50% 50%;
+      }
     }
-
-    &__error {
-
-        position: absolute;
-        bottom: @global-gutter--small;
-        right: @global-gutter--small/2 + 10px;
-
-        opacity: 0;
-        transition: opacity .25s ease;
-        
-        //Steal some input space at the end of its related input element
-        +input {
-            padding-right: 35px;
-        }
-    }
-
-    &__alert {
-        clear: both;
-        padding-top: @global-gutter--small;
-    }
-
-    &__spinner {
-        float: right;
-        margin-top: @global-gutter--small;
-        margin-right: @global-gutter--small;
-        opacity: 0;
-
-        animation: spin 1s linear infinite;
-        transition: opacity .25s ease;
-
-        @keyframes spin {
-            from {
-                transform: rotate(-360deg);
-                //transform-origin: 50% 50%;
-            }
-            to {
-                transform: rotate(0deg);
-                //transform-origin: 50% 50%;
-            }
-        }
-    }
+  }
 }
 
-
 @media @bp-tablet {
-
-    .contact-form__element--small {
-        .c6();
-        float: left;
-        clear: none;
-    }
+  .contact-form__element--small {
+    .c6();
+    float: left;
+    clear: none;
+  }
 }

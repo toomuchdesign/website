@@ -7,46 +7,44 @@
 
 /*Setting border-box box-sizing*/
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 /*Images scalability (From Twitter bootstrap)*/
 img {
-	max-width: 100% !important; /* Set a maxium relative to the parent */
-    width: auto\9 !important; /* IE7-8 need help adjusting responsive images */
-    height: auto; /* Scale the height according to the width, otherwise you get stretching */
-    vertical-align: middle;
-    border: 0;
-    display: block;
-    -ms-interpolation-mode: bicubic;
+  max-width: 100% !important; /* Set a maxium relative to the parent */
+  width: auto\9 !important; /* IE7-8 need help adjusting responsive images */
+  height: auto; /* Scale the height according to the width, otherwise you get stretching */
+  vertical-align: middle;
+  border: 0;
+  display: block;
+  -ms-interpolation-mode: bicubic;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
-    height: 100%;
+  position: relative;
+  min-height: 100%;
+  height: 100%;
 }
 
 body {
-    height: 100%;
-    background-color: @global-background;
-    overflow-x: hidden;
+  height: 100%;
+  background-color: @global-background;
+  overflow-x: hidden;
 }
-
 
 /*Navigation elements*/
 nav {
+  a {
+    text-decoration: none;
+  }
 
-    a {
-        text-decoration: none;
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
     }
-
-    ul {
-        margin: 0;
-        padding: 0;
-
-        li {
-            list-style: none;
-        }
-    }
+  }
 }

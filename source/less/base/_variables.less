@@ -1,145 +1,130 @@
 //******************************************************************
-//Site Name: 
+//Site Name:
 //Author: Andrea Carraro (andreacarraro.it)
 /*
 /*Stylesheet: LESS variables
 /*******************************************************************/
 
-
 /* =Colours schema
 ----------------------------------------------- */
-@black:                                                 #000;
-@white:                                                 #fff;
+@black: #000;
+@white: #fff;
 
 //Neuter color usually used for body text (See below...)
-@neuter-color:                                          #232420;
-@neuter-color--light:                                   lighten(@neuter-color, 25%);
-@neuter-color--extralight:                              lighten(@neuter-color, 40%);
-
+@neuter-color: #232420;
+@neuter-color--light: lighten(@neuter-color, 25%);
+@neuter-color--extralight: lighten(@neuter-color, 40%);
 
 //Just a basic schema for colors definition
-@primary-color:                                         #ec7f23;
-@secondary-color:                                       #ec7f23;
-
+@primary-color: #ec7f23;
+@secondary-color: #ec7f23;
 
 //Special color. Eye attractive. Might be used for body links (See below...)
-@action-color:                                          #eb7f23;
-@action-color--light:                                   #f9ae00;
-
-
+@action-color: #eb7f23;
+@action-color--light: #f9ae00;
 
 /* =Global sizes
 ----------------------------------------------- */
-@page-min-width:                                        320px;
-@page-max-width:                                        1200px;
-
+@page-min-width: 320px;
+@page-max-width: 1200px;
 
 /* =Font-sizes (inuit.css)
 ----------------------------------------------- */
 /**
  * Font-sizes (in pixels). Refer to relevant sections for their implementations.
  */
-@base-font-size:                                        15;
-@base-line-height:                                      17;
+@base-font-size: 15;
+@base-line-height: 17;
 
-@base-spacing-unit:                                     unit(@base-line-height);
-@half-spacing-unit:                                     unit((@base-spacing-unit / 2));
-@line-height-ratio:                                     unit((@base-line-height/@base-font-size));
+@base-spacing-unit: unit(@base-line-height);
+@half-spacing-unit: unit((@base-spacing-unit / 2));
+@line-height-ratio: unit((@base-line-height / @base-font-size));
 
-@giga-size:                                             96;
-@mega-size:                                             72;
-@kilo-size:                                             48;
+@giga-size: 96;
+@mega-size: 72;
+@kilo-size: 48;
 
-@h1-size:                                               36; // .alpha
-@h2-size:                                               30; // .beta
-@h3-size:                                               24; // .gamma
-@h4-size:                                               20; // .delta
-@h5-size:                                               16; // .epsilon
-@h6-size:                                               14; // .zeta
+@h1-size: 36; // .alpha
+@h2-size: 30; // .beta
+@h3-size: 24; // .gamma
+@h4-size: 20; // .delta
+@h5-size: 16; // .epsilon
+@h6-size: 14; // .zeta
 
-@milli-size:                                            12;
-@micro-size:                                            10;
-
+@milli-size: 12;
+@micro-size: 10;
 
 /* =Text
 ----------------------------------------------- */
-@global-color:                                          @neuter-color--light;
+@global-color: @neuter-color--light;
 
-@global-link-color:                                     @global-color;
-@global-link-hover-color:                               @action-color;
-
+@global-link-color: @global-color;
+@global-link-hover-color: @action-color;
 
 /* =Font families
 ----------------------------------------------- */
-@serif:                                                 "OpenSans",Arial,Helvetica,sans-serif;
-@sans-serif:                                            "LeagueGothic","Arial Narrow",Tahoma,Arial,Helvetica,Sans serif;
+@serif: 'OpenSans', Arial, Helvetica, sans-serif;
+@sans-serif: 'LeagueGothic', 'Arial Narrow', Tahoma, Arial, Helvetica,
+  Sans serif;
 
-@base-font-family:                                      @serif;
-
+@base-font-family: @serif;
 
 /* =Backgrounds & Borders
 ----------------------------------------------- */
-@global-background:                                     #F4F4F4;
-@global-border:                                         darken(@global-background, 10%);
-@global-shadow:											0 1px 2px #B6AEAE;
-
+@global-background: #f4f4f4;
+@global-border: darken(@global-background, 10%);
+@global-shadow: 0 1px 2px #b6aeae;
 
 /* =Spacing
 ----------------------------------------------- */
-@global-gutter:                                         20px;
-@global-gutter--small:                                  10px;
-@global-gutter--large:                                  60px;
-
+@global-gutter: 20px;
+@global-gutter--small: 10px;
+@global-gutter--large: 60px;
 
 /* =Z-index's
 ----------------------------------------------- */
-@zindex-modal:                                           5000;
-@zindex-overlay:                                         4000;
-@zindex-dropDown:                                        3000;
-@zindex-header:                                          2000;
-@zindex-footer:                                          1000;
-
+@zindex-modal: 5000;
+@zindex-overlay: 4000;
+@zindex-dropDown: 3000;
+@zindex-header: 2000;
+@zindex-footer: 1000;
 
 /* =Breakpoints
 ----------------------------------------------- */
-@bp-mobile-size:                                         420px;
-@bp-tablet-size:                                         530px;
-@bp-two-columns-size:                                    770px;
-@bp-desktop-size:                                        960px;
-@bp-desktop-xl-size:                                     1200px;
+@bp-mobile-size: 420px;
+@bp-tablet-size: 530px;
+@bp-two-columns-size: 770px;
+@bp-desktop-size: 960px;
+@bp-desktop-xl-size: 1200px;
 
-@bp-mobile:                                              ~"only screen and (max-width: @{bp-mobile-size})";
-@bp-tablet:                                              ~"only screen and (min-width: @{bp-tablet-size})";
-@bp-two-columns:                                         ~"only screen and (min-width: @{bp-two-columns-size})";
-@bp-desktop:                                             ~"only screen and (min-width: @{bp-desktop-size})";
-@bp-desktop-xl:                                          ~"only screen and (min-width: @{bp-desktop-xl-size})";
-
+@bp-mobile: ~'only screen and (max-width: @{bp-mobile-size})';
+@bp-tablet: ~'only screen and (min-width: @{bp-tablet-size})';
+@bp-two-columns: ~'only screen and (min-width: @{bp-two-columns-size})';
+@bp-desktop: ~'only screen and (min-width: @{bp-desktop-size})';
+@bp-desktop-xl: ~'only screen and (min-width: @{bp-desktop-xl-size})';
 
 /* =Icons
 ----------------------------------------------- */
-@global-icons-size:                                     40px;
-
+@global-icons-size: 40px;
 
 /* =Header
 ----------------------------------------------- */
-@off-canvas-menu-width:                                 250px;
+@off-canvas-menu-width: 250px;
 
-@header-heigth--small:                                  50px;
-@header-elements-height--small:                         40px;
+@header-heigth--small: 50px;
+@header-elements-height--small: 40px;
 
-@header-logo-width:                                     85px;
-@header-logo-width-large:                               200px;
+@header-logo-width: 85px;
+@header-logo-width-large: 200px;
 
-@header-width--large:                                   25%;
-
+@header-width--large: 25%;
 
 /* =Footer
 ----------------------------------------------- */
-@footer-height:                                         250px;
-@footer-nav-heigth:                                     auto;
-
+@footer-height: 250px;
+@footer-nav-heigth: auto;
 
 /* =Other
 ----------------------------------------------- */
-@path-to-template:                                      '../';
-@global-touch-elements-size:                            44px;
+@path-to-template: '../';
+@global-touch-elements-size: 44px;

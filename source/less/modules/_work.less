@@ -1,88 +1,83 @@
 .work {
+  clear: both;
+  padding: @global-gutter + @global-gutter--small 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  &__title {
+    margin: 0;
+
+    &--small {
+      font-size: 60%;
+    }
+  }
+
+  &__subtitle {
+    font-weight: bold;
+  }
+
+  &__info {
+    margin: @global-gutter--small 0 0 0;
+    padding: 0;
+
+    > li {
+      list-style-type: none;
+    }
+  }
+
+  &__link {
+    margin-top: @global-gutter--small;
+  }
+
+  &__preview {
+    &:extend(.clear all);
 
     clear: both;
-    padding: @global-gutter + @global-gutter--small 0;
+    margin: @global-gutter--small -@global-gutter--small / 2 0 -@global-gutter--small /
+      2;
+  }
 
-    &:first-of-type {
-        padding-top: 0;
+  &__thumbnail {
+    position: relative;
+    float: left;
+    overflow: hidden;
+
+    margin: 0 1%;
+    //Keep thumbnail ratio
+    padding-top: 48%;
+
+    background-color: darken(@global-background, 8%);
+    box-shadow: @global-shadow;
+
+    &--small {
+      width: 27%;
     }
 
-    &__title {
-
-        margin: 0;
-
-        &--small {
-            font-size: 60%;
-        }
+    &--large {
+      width: 69%;
     }
 
-    &__subtitle {
-
-        font-weight: bold;
+    &--full {
+      width: 98%;
     }
 
-    &__info {
+    img {
+      //Keep work image sticked to thumbnails borders
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 100%;
+      transition: opacity 0.5s ease-in-out;
+      opacity: 1;
 
-        margin: @global-gutter--small 0 0 0;
-        padding: 0;
-
-        >li {
-            list-style-type: none;
-        }
+      //Hide image for a funny fade in effect on image load
+      &.lazyload {
+        opacity: 0;
+        height: auto;
+      }
     }
-
-    &__link {
-        margin-top: @global-gutter--small;
-    }
-
-    &__preview {
-        &:extend(.clear all);
-
-        clear: both;
-        margin: @global-gutter--small -@global-gutter--small/2 0 -@global-gutter--small/2;
-    }
-
-    &__thumbnail {
-
-        position: relative;
-        float: left;
-        overflow: hidden;
-
-        margin: 0 1%;
-        //Keep thumbnail ratio
-        padding-top: 48%;
-
-        background-color: darken( @global-background, 8% );
-        box-shadow: @global-shadow;
-
-
-        &--small {
-            width: 27%;
-        }
-
-        &--large {
-            width: 69%;
-        }
-
-        &--full {
-            width: 98%;
-        }
-
-        img {
-            //Keep work image sticked to thumbnails borders
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 100%;
-            transition: opacity .5s ease-in-out;
-            opacity: 1;
-
-            //Hide image for a funny fade in effect on image load
-            &.lazyload {
-              opacity: 0;
-              height: auto;
-            }
-        }
-    }
+  }
 }
