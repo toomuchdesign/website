@@ -223,7 +223,7 @@ module.exports = function(grunt) {
                     '<%= settings.build %>/js/plugins.js': [
                         '<%= settings.node_modules %>/domready/ready.js',
                         '<%= settings.node_modules %>/lazysizes/lazysizes.js',
-                        '<%= settings.node_modules %>/picturefill/dist/picturefill.js',
+                        '<%= settings.node_modules %>/lazysizes/plugins/respimg/ls.respimg.js',
                         '<%= settings.node_modules %>/smooth-scroll/dist/smooth-scroll.js',
                     ],
                 }
