@@ -188,19 +188,6 @@ module.exports = function(grunt) {
             },
         }, //end autoprefixer
 
-        //Expose media queries style for old ie
-        match_media: {
-
-            old_ie: {
-                options: {
-                    width: '960px',
-                },
-                files: {
-                    '<%= settings.build %>/css/ie.css': ['<%= settings.build %>/css/style.css']
-                }
-            }
-        }, //end Match media
-
         uglify: {
 
             options: {
@@ -310,7 +297,6 @@ module.exports = function(grunt) {
           'build_markup_files',
           'build_thumbnails',
           'build_stylesheets',
-          'match_media:old_ie',
           'build_javascript',
            ]
     );
