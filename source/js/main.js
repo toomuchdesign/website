@@ -1,9 +1,4 @@
-/*jslint browser: true*/
-/*global domready, SmoothScroll*/
-
 (function () {
-
-    //Avoid accidental global variable declarations
     'use strict';
 
     //Store reference to HTML
