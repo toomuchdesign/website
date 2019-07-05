@@ -1,5 +1,5 @@
 //******************************************************************
-//Site Name: 
+//Site Name:
 //Author: Andrea Carraro (andreacarraro.it)
 /*
 /*Stylesheet: Mixins & Constants Stylesheet
@@ -7,122 +7,150 @@
 
 /* 12 columns widths
 ----------------------------------------------- */
-@c1:      8.333%;
-@c2:      16.666%;
-@c3:      25%;
-@c4:      33.333%;
-@c5:      41.666%;
-@c6:      50%;
-@c7:      58.333%;
-@c8:      66.666%;
-@c9:      75%;
-@c10:     83.333%;
-@c11:     91.666%;
-@c12:     100%;
+@c1: 8.333%;
+@c2: 16.666%;
+@c3: 25%;
+@c4: 33.333%;
+@c5: 41.666%;
+@c6: 50%;
+@c7: 58.333%;
+@c8: 66.666%;
+@c9: 75%;
+@c10: 83.333%;
+@c11: 91.666%;
+@c12: 100%;
 
 //Golden ratio
 @golden-large: 61.8%;
 @golden-small: 38.2%;
 
-.c1 {width: @c1}
-.c2 {width: @c2}
-.c3 {width: @c3}
-.c4 {width: @c4}
-.c5 {width: @c5}
-.c6 {width: @c6}
-.c7 {width: @c7}
-.c8 {width: @c8}
-.c9 {width: @c9}
-.c10 {width: @c10}
-.c11 {width: @c11}
-.c12 {width: @c12}
-.c-golden--large {width: @golden-large}
-.c-golden--small {width: @golden-small}
-
+.c1 {
+  width: @c1;
+}
+.c2 {
+  width: @c2;
+}
+.c3 {
+  width: @c3;
+}
+.c4 {
+  width: @c4;
+}
+.c5 {
+  width: @c5;
+}
+.c6 {
+  width: @c6;
+}
+.c7 {
+  width: @c7;
+}
+.c8 {
+  width: @c8;
+}
+.c9 {
+  width: @c9;
+}
+.c10 {
+  width: @c10;
+}
+.c11 {
+  width: @c11;
+}
+.c12 {
+  width: @c12;
+}
+.c-golden--large {
+  width: @golden-large;
+}
+.c-golden--small {
+  width: @golden-small;
+}
 
 /* Image replacement
- * http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/ 
+ * http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
 ----------------------------------------------- */
 .ir() {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .no-ir() {
-    text-indent: 0;
-    white-space: normal;
-    overflow: hidden;
+  text-indent: 0;
+  white-space: normal;
+  overflow: hidden;
 }
-
 
 /* Vertical align (inline-block method)
  * http://css-plus.com/2013/01/inline-block-the-complete-story/
 ----------------------------------------------- */
-.valign-ib-p(@height) { //Parent
-    height: @height; //Some kind of height is necessary here.
-    line-height: @height; //This value should equal the height
+.valign-ib-p(@height) {
+  //Parent
+  height: @height; //Some kind of height is necessary here.
+  line-height: @height; //This value should equal the height
 }
 
-.valign-ib-c() { //Child
-    display: inline-block;
-    *display: inline; zoom: 1; //IE7 inline-block hack
-    line-height: normal; //If left out, the line-height of .block will be inherited - by the parent (@height px) in this case
-    vertical-align: middle; //This vertically centers inline-level elements
+.valign-ib-c() {
+  //Child
+  display: inline-block;
+  *display: inline;
+  zoom: 1; //IE7 inline-block hack
+  line-height: normal; //If left out, the line-height of .block will be inherited - by the parent (@height px) in this case
+  vertical-align: middle; //This vertically centers inline-level elements
 }
-
 
 /* Vertical align (ghost method, unknown container height)
  * http://css-tricks.com/centering-in-the-unknown/
 ----------------------------------------------- */
-.valign-ghost-p() { //Parent (any width and height)
+.valign-ghost-p() {
+  //Parent (any width and height)
 
-    &:before { //The ghost, nudged to maintain perfect centering
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        margin-right: -0.25em; //Adjusts for spacing
-    }
-}
-
-.valign-ghost-c() { //Child (any width and height)
+  &:before {
+    //The ghost, nudged to maintain perfect centering
+    content: '';
     display: inline-block;
+    height: 100%;
     vertical-align: middle;
+    margin-right: -0.25em; //Adjusts for spacing
+  }
 }
 
+.valign-ghost-c() {
+  //Child (any width and height)
+  display: inline-block;
+  vertical-align: middle;
+}
 
 /* Display: inline-block hack for ie7
 ----------------------------------------------- */
 .dib-ie7() {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
 }
-
 
 /* Crossbrowser word-break & hypernation
  * http://kenneth.io/blog/2012/03/04/word-wrapping-hypernation-using-css/
 ----------------------------------------------- */
 
 .break-words() {
-    -ms-word-break: break-all;
-    /*word-break: break-all;*/
+  -ms-word-break: break-all;
+  /*word-break: break-all;*/
 
-    /* Non standard for webkit */
-    word-break: break-word;
+  /* Non standard for webkit */
+  word-break: break-word;
 
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
-
 
 /* Background icons
 ----------------------------------------------- */
 .icon(@x: 50%, @y: 0) {
-    background: url("../images/icons.png") no-repeat scroll @x @y transparent;
+  background: url('../images/icons.png') no-repeat scroll @x @y transparent;
 }
 
 /* =Generate font-size statement (inuit.css)
@@ -139,16 +167,16 @@
  */
 
 .font-size(@font-size) {
-    font-size:unit(@font-size, px);
-    font-size:unit((@font-size/@base-font-size), rem);
+  font-size: unit(@font-size, px);
+  font-size: unit((@font-size / @base-font-size), rem);
 }
 
 .font-size(@font-size, true) {
-    font-size:unit(@font-size, px);
-    font-size:unit((@font-size/@base-font-size), rem);
-    line-height:ceil(@font-size/@base-line-height)*(@base-line-height/@font-size);
+  font-size: unit(@font-size, px);
+  font-size: unit((@font-size / @base-font-size), rem);
+  line-height: ceil(@font-size / @base-line-height) *
+    (@base-line-height / @font-size);
 }
-
 
 /* REM + PX fallback generator
 ----------------------------------------------- */
@@ -165,36 +193,34 @@
  */
 
 .x-rem (@property, @value) {
- 
   // This is a workaround, inspired by https://github.com/borodean/less-properties
   @numeric-value: unit(@value, rem);
   @px-fallback: unit((@numeric-value * @base-font-size), px);
 
-  -: ~`(function () { return ';@{property}: @{px-fallback}'; }())`;
-  -: ~`(function () { return ';@{property}: @{numeric-value}'; }())`;
+  -: ~`(function () {return ';@{property}: @{px-fallback}' ; }()) `;
+  -: ~`(function () {return ';@{property}: @{numeric-value}' ; }()) `;
 }
-
 
 /* Automatically output a shifted color
 ----------------------------------------------- */
 // .shifted-color(@color, 15%);
 
 .shifted-color (@color, @strength: 15%) when (lightness(@color) >= 75%) {
-    @shifted-color : mix(#000, @color, @strength);
+  @shifted-color : mix(#000, @color, @strength);
 }
 .shifted-color (@color, @strength: 15%) when (lightness(@color) < 75%) {
-    @shifted-color :mix(#fff, @color, @strength);
+  @shifted-color :mix(#fff, @color, @strength);
 }
 
 /* Set link color and its hover state with an automated shift
 ----------------------------------------------- */
 .auto-link-color (@color) {
-    color: @color;
+  color: @color;
 
-    &:hover {
-        .shifted-color(@color);
-        color:  @shifted-color;
-    }
+  &:hover {
+    .shifted-color(@color);
+    color: @shifted-color;
+  }
 }
 
 /* Choose black or white basing on the better contrast
@@ -202,12 +228,11 @@
 // .black-or-white(@color, 0%);
 
 .black-or-white (@color, @attenuation: 0%) when (lightness(@color) >= 75%) {
-    @black-or-white : lighten(#000, @attenuation);
+  @black-or-white : lighten(#000, @attenuation);
 }
 .black-or-white (@color, @attenuation: 0%) when (lightness(@color) < 75%) {
-    @black-or-white : darken(#fff, @attenuation);
+  @black-or-white : darken(#fff, @attenuation);
 }
-
 
 /* Sticky Footer: set style for make a footer stycked to bottom
  * http://mystrd.at/modern-clean-css-sticky-footer/
@@ -233,18 +258,17 @@
  */
 
 .sticky-body (@footer-height: 50px, @footer-top-padding: 0) {
-    @bottom-padding : @footer-height + @footer-top-padding;
-    margin: 0 0 @bottom-padding;
+  @bottom-padding : @footer-height + @footer-top-padding;
+  margin: 0 0 @bottom-padding;
 }
 
 .sticky-footer (@footer-height: 50px, @footer-top-padding: 0) {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: @footer-height;
-    width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: @footer-height;
+  width: 100%;
 }
-
 
 /* Automatically handles clearings and floatings in grid layouts
 ----------------------------------------------- */
@@ -269,26 +293,24 @@
  */
 
 .grid-float-clearing(@old-columns-number : 1, @columns-number : 1, @floating-direction: left) {
-    .gfc-add-clear();
-    .gfc-clear-reset();
+  .gfc-add-clear();
+  .gfc-clear-reset();
 }
 
 .gfc-add-clear() when (@columns-number > 1) {
+  @multiplicator: @columns-number;
+  @shift: @columns-number + 1;
 
-    @multiplicator:             @columns-number;
-    @shift:                     @columns-number + 1;
-
-    &:nth-child( @{multiplicator}n + @{shift} ) {
-        clear: @floating-direction;
-    }
+  &:nth-child(@{multiplicator}n + @{shift}) {
+    clear: @floating-direction;
+  }
 }
 
 .gfc-clear-reset() when (@old-columns-number > 1) {
+  @multiplicator : @old-columns-number;
+  @shift : @old-columns-number + 1;
 
-    @multiplicator : @old-columns-number;
-    @shift : @old-columns-number + 1;
-
-    &:nth-child( @{multiplicator}n + @{shift} ) {
-        clear: none;
-    }
+  &:nth-child(@{multiplicator}n + @{shift}) {
+    clear: none;
+  }
 }

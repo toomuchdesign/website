@@ -1,32 +1,31 @@
 //******************************************************************
-//Site Name: 
+//Site Name:
 //Author: Andrea Carraro (andreacarraro.it)
 /*
 /*Stylesheet: Forms
 /*******************************************************************/
 
-input[type="email"],
-input[type="text"],
+input[type='email'],
+input[type='text'],
 textarea {
-    width: 100%;
-    padding: 10px;
+  width: 100%;
+  padding: 10px;
 
-    background-color: @white;
-    border: 1px solid @global-border;
-    color: lighten( @global-color, 15% );
+  background-color: @white;
+  border: 1px solid @global-border;
+  color: lighten(@global-color, 15%);
 
-    &:hover {
-        border-color: darken( @global-border, 10% );
-    }
+  &:hover {
+    border-color: darken(@global-border, 10%);
+  }
 
-    &:focus {
-        border-color: mix( @action-color, @white, 50% );
-        outline: none;
-    }
-
+  &:focus {
+    border-color: mix(@action-color, @white, 50%);
+    outline: none;
+  }
 }
 
 ::placeholder,
 .placeholder {
-    color: lighten(@global-color, 30%);
+  color: lighten(@global-color, 30%);
 }
