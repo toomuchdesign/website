@@ -34,7 +34,6 @@
     "domready": "^1.0.8",
     "lazysizes": "^5.1.0",
     "normalize.css": "^8.0.1",
-    "picturefill": "^3.0.3",
     "smooth-scroll": "^16.1.0"
   }
 }
