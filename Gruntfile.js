@@ -1,3 +1,5 @@
+const mozjpeg = require('imagemin-mozjpeg');
+
 module.exports = function(grunt) {
   'use strict';
 
@@ -104,80 +106,26 @@ module.exports = function(grunt) {
       },
     }, //end copy
 
-    responsive_images: {
-      //See: https://github.com/andismith/grunt-responsive-images
-      //See: http://imagemagick.org
-      options: {
-        quality: 85,
-        engine: 'im',
-      },
-      small: {
+    imagemin: {
+      thumbnails: {
         options: {
-          sizes: [{name: 's', width: 79}],
-        },
-        files: [
-          {
-            expand: true,
-            cwd: '<%= settings.build %>',
-            src: ['<%= settings.thumbnails %>/*_small.jpg'],
-            dest: '<%= settings.build %>',
-          },
-        ],
-      },
-      large: {
-        options: {
-          sizes: [{name: 's', width: 201}],
-        },
-        files: [
-          {
-            expand: true,
-            cwd: '<%= settings.build %>',
-            src: ['<%= settings.thumbnails %>/*_large.jpg'],
-            dest: '<%= settings.build %>',
-          },
-        ],
-      },
-      full: {
-        options: {
-          sizes: [{name: 's', width: 290}],
-        },
-        files: [
-          {
-            expand: true,
-            cwd: '<%= settings.build %>',
-            src: ['<%= settings.thumbnails %>/*_full.jpg'],
-            dest: '<%= settings.build %>',
-          },
-        ],
-      },
-    }, // end responsive_images
-
-    responsive_images_extender: {
-      target: {
-        options: {
-          srcset: [{suffix: '-s', value: '320w'}],
-          sizes: [
-            {
-              selector: '.lazyload',
-              sizeList: [
-                {
-                  cond: 'min-width: 770px',
-                  size: '65vw',
-                },
-                {
-                  cond: 'default',
-                  size: '100vw',
-                },
-              ],
-            },
+          optimizationLevel: 3,
+          use: [
+            mozjpeg({
+              quality: 90,
+            }),
           ],
         },
-        files: {
-          '<%= settings.build %>/index.html':
-            '<%= settings.build %>/index.html',
-        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%= settings.build %>',
+            src: ['<%= settings.thumbnails %>/*.{png,jpg,gif}'],
+            dest: '<%= settings.build %>',
+          },
+        ],
       },
-    }, // end responsive_images_extender
+    },
 
     less: {
       options: {
@@ -235,7 +183,6 @@ module.exports = function(grunt) {
           '<%= settings.build %>/js/plugins.js': [
             '<%= settings.node_modules %>/domready/ready.js',
             '<%= settings.node_modules %>/lazysizes/lazysizes.js',
-            '<%= settings.node_modules %>/lazysizes/plugins/respimg/ls.respimg.js',
             '<%= settings.node_modules %>/smooth-scroll/dist/smooth-scroll.js',
           ],
         },
@@ -328,13 +275,12 @@ module.exports = function(grunt) {
   grunt.registerTask('build_thumbnails', '', [
     'clean:thumbnails',
     'copy:thumbnails',
-    'responsive_images',
+    'imagemin:thumbnails',
   ]);
 
   grunt.registerTask('build_markup_files', 'Build HTML files.', [
     'clean:markup_files',
     'copy:markup_files',
-    //'responsive_images_extender',
   ]);
 
   grunt.registerTask('build_stylesheets', 'Build Stylesheets.', [
