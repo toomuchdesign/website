@@ -34,7 +34,6 @@
   },
   "engine": "node >= 0.10",
   "dependencies": {
-    "domready": "^1.0.8",
     "lazysizes": "^5.1.0",
     "normalize.css": "^8.0.1",
     "smooth-scroll": "^16.1.0"

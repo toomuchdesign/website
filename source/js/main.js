@@ -3,9 +3,8 @@
 
   //Store reference to HTML
   var html = document.documentElement;
-
   var AC = {
-    onReady: function() {
+    start: function() {
       //Go on and set up website
       AC.setUpSite();
     },
@@ -187,8 +186,5 @@
     },
   }; //End AC
 
-  //Ready event
-  domready(function() {
-    AC.onReady();
-  });
+  AC.start();
 })();

@@ -181,7 +181,6 @@ module.exports = function(grunt) {
       client_components: {
         files: {
           '<%= settings.build %>/js/plugins.js': [
-            '<%= settings.node_modules %>/domready/ready.js',
             '<%= settings.node_modules %>/lazysizes/lazysizes.js',
             '<%= settings.node_modules %>/smooth-scroll/dist/smooth-scroll.js',
           ],
