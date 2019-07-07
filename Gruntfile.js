@@ -146,19 +146,14 @@ module.exports = function(grunt) {
       },
     }, //end less
 
-    autoprefixer: {
+    postcss: {
       options: {
-        //https://github.com/postcss/autoprefixer#browsers
-        browsers: ['last 10 versions', 'ie 8', 'ie 9'],
+        processors: [require('autoprefixer')()],
       },
-
       stylesheets: {
-        options: {
-          map: true,
-        },
         src: '<%= settings.build %>/css/style.css',
       },
-    }, //end autoprefixer
+    },
 
     uglify: {
       options: {
@@ -285,7 +280,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build_stylesheets', 'Build Stylesheets.', [
     'clean:stylesheets',
     'less:stylesheets',
-    'autoprefixer:stylesheets',
+    'postcss:stylesheets',
   ]);
 
   grunt.registerTask('build_javascript', 'Build Javascript.', [
