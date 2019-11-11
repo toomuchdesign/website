@@ -1,14 +1,11 @@
 .menu-toggle {
-  float: right;
-  height: @header-heigth--small;
+  height: @header-height--small;
+  margin-left: auto;
   margin-right: -10px;
 
-  .hamburger-button(@header-heigth--small);
-}
+  .hamburger-button(@header-height--small);
 
-.menu-toggle--open {
-}
-
-.menu-toggle--close {
-  display: none;
+  &--close {
+    display: none;
+  }
 }

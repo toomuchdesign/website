@@ -1,13 +1,24 @@
 .site-branding {
-  float: left;
-}
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  text-align: left;
 
-@media @bp-two-columns {
-  .site-branding {
-    float: none;
+  &__logo {
+    display: inline-block;
   }
 
-  .site-branding__logo {
-    display: inline-block;
+  &__copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: @neuter-color;
+  }
+
+  @media @bp-two-columns {
+    text-align: center;
+    height: auto;
+    flex-direction: column;
   }
 }

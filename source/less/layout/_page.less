@@ -1,0 +1,11 @@
+.l-page {
+  min-width: @page-min-width;
+  max-width: @page-max-width;
+  margin: 0 auto;
+
+  &-wrapper {
+    @media @bp-two-columns {
+      margin-left: @header-width--large;
+    }
+  }
+}

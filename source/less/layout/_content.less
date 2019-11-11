@@ -1,0 +1,37 @@
+/*Header off canvas menu*/
+#header:target,
+#header:target + .l-content {
+  @media only screen and (max-width: @bp-two-columns-size) {
+    border-right: 1px solid @global-border;
+    transform: translate3d(-@off-canvas-menu-width, 0, 0);
+
+    /*Swap toggle buttons*/
+    .menu-toggle--open {
+      display: none;
+    }
+
+    .menu-toggle--close {
+      display: block;
+    }
+  }
+}
+
+.l-content {
+  padding: @global-gutter;
+  width: 100%;
+  transition: transform 0.25s ease;
+
+  @media @bp-two-columns {
+    float: left;
+    padding: @global-gutter--large;
+    border-left: 1px solid @global-border;
+  }
+
+  &-section {
+    margin-top: @global-gutter--large;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
