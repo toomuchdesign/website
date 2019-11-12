@@ -16,9 +16,18 @@
         'js'
       );
 
+      AC.initializeCloseOffCanvasMenu();
       AC.initializePlaceholdersFallback();
       AC.initializeSmoothScroll();
       AC.initializeContactForm();
+    },
+
+    initializeCloseOffCanvasMenu: function() {
+      var button = document.getElementById('offcanvas-close');
+      button.onclick = function(e) {
+        e.preventDefault();
+        AC.closeOffCanvasMenu();
+      };
     },
 
     initializeSmoothScroll: function() {
@@ -34,7 +43,8 @@
     },
 
     closeOffCanvasMenu: function(event) {
-      location.hash = event.detail.toggle.hash;
+      location.hash = '';
+      history.replaceState('', document.title, window.location.pathname);
     },
 
     initializePlaceholdersFallback: function() {
