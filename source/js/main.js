@@ -26,16 +26,14 @@
       new SmoothScroll('a[data-scroll]', {
         updateURL: false,
         emitEvents: true,
+        speed: 150,
+        easing: 'easeInOutCubic',
       });
 
-      document.addEventListener(
-        'scrollStop',
-        AC.closeOffCanvasMenuAfterScroll,
-        false
-      );
+      document.addEventListener('scrollStart', AC.closeOffCanvasMenu, false);
     },
 
-    closeOffCanvasMenuAfterScroll: function(event) {
+    closeOffCanvasMenu: function(event) {
       location.hash = event.detail.toggle.hash;
     },
 
