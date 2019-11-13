@@ -14,11 +14,16 @@
     justify-content: center;
     padding: 10px;
     color: @neuter-color;
+    font-size: 12px;
   }
 
   @media @bp-two-columns {
     text-align: center;
     height: auto;
     flex-direction: column;
+
+    &__copy {
+      .font-size(@base-font-size);
+    }
   }
 }

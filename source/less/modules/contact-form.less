@@ -7,6 +7,14 @@
       @global-gutter--small / 2;
     display: block;
     clear: both;
+
+    @media @bp-tablet {
+      &--small {
+        .c6();
+        float: left;
+        clear: none;
+      }
+    }
   }
 
   &__label {
@@ -60,13 +68,5 @@
         //transform-origin: 50% 50%;
       }
     }
-  }
-}
-
-@media @bp-tablet {
-  .contact-form__element--small {
-    .c6();
-    float: left;
-    clear: none;
   }
 }
