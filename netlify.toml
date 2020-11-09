@@ -1,3 +1,9 @@
 [build]
   command = "npm run build"
+  functions = "lambda/"
   publish = "build"
+
+[dev]
+  framework = "#custom"
+  command = "npm run start:page"
+  targetPort = 3000
