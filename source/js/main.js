@@ -106,18 +106,6 @@
           AC.validateField(formMessage);
 
         if (validation && !formMail.value) {
-          //Organize the data properly
-          var data =
-            'name=' +
-            encodeURIComponent(formName.value) +
-            '&mail=' +
-            encodeURIComponent(formMail.value) +
-            '&email=' +
-            encodeURIComponent(formEmail.value) +
-            '&message=' +
-            encodeURIComponent(formMessage.value) +
-            '&ajx=1'; //Ajax flag for server processing
-
           //Disabled all text fields
           formName.setAttribute('disabled', true);
           formMail.setAttribute('disabled', true);
@@ -130,43 +118,32 @@
           //Show the loading spinner
           formSpinner.style.opacity = 1;
 
-          //Start the ajax request
-          var request = new XMLHttpRequest();
-          request.open('GET', 'scripts/contactmail.php?' + data, true);
+          var data = {
+            name: formName.value,
+            mail: formMail.value,
+            email: formEmail.value,
+            message: formMessage.value,
+          };
 
-          request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-              // Ajax Success!
-
-              //Check server response status
-              //console.log(request.responseText);
-              var resp = JSON.parse(request.responseText);
-              //console.log(resp);
-
-              if (resp.sent === 1) {
-                formSubmit.setAttribute('value', msg.thanks);
-              } else {
-                formAlert.innerHTML = resp.msg;
-                formSubmit.setAttribute('value', msg.retry);
+          fetch('/.netlify/functions/send-message', {
+            body: JSON.stringify(data),
+            method: 'POST',
+          })
+            .then(function(response) {
+              if (!response.ok) {
+                throw response;
               }
-            } else {
-              // We reached our target server, but it returned an error
+            })
+            .then(function() {
+              formSubmit.setAttribute('value', msg.thanks);
+            })
+            .catch(function(err) {
               formAlert.innerHTML = msg.please_retry;
               formSubmit.setAttribute('value', msg.retry);
-            }
-            formSpinner.style.opacity = 0;
-          };
-
-          request.onerror = function() {
-            //There was a connection error of some sort
-            formAlert.innerHTML = msg.please_retry;
-            formSubmit.setAttribute('value', msg.retry);
-            formSpinner.style.opacity = 0;
-          };
-
-          //console.log( 'Sending' );
-          //console.log( data );
-          request.send();
+            })
+            .finally(function() {
+              formSpinner.style.opacity = 0;
+            });
         } // end if Validation
       });
     },

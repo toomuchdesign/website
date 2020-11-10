@@ -1,15 +1,15 @@
 # OS generated files #
 ######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
+.*
 ehthumbs.db
 Thumbs.db
 node_modules
-client/dist/*pre*.js
 
-# PROJECT FILES
+!.browserslistrc
+!.editorconfig
+!.prettierignore
+!.prettierrc
+
+# Build folders
+lambda
 build
-bower_components
