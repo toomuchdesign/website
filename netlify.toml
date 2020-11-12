@@ -3,6 +3,11 @@
   functions = "lambda/"
   publish = "build"
 
+[[redirects]]
+  from = "/cv"
+  to = "https://www.dropbox.com/s/eg07ouwq3lm8bqy/AndreaCarraro_cv.pdf?dl=1"
+  status = 200
+
 [dev]
   framework = "#custom"
   command = "npm run start:page"
