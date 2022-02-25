@@ -9,6 +9,7 @@ node_modules
 !.editorconfig
 !.prettierignore
 !.prettierrc
+!.nvmrc
 
 # Build folders
 lambda
