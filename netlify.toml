@@ -1,6 +1,5 @@
 [build]
   command = "npm run build:page"
-  functions = "lambda/"
   publish = "build"
 
 [dev]
