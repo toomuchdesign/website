@@ -10,7 +10,7 @@
     "start:page": "grunt sync",
     "build": "npx netlify build",
     "build:page": "grunt build",
-    "prepare": "npx simple-git-hooks && npm run build",
+    "prepare": "npx simple-git-hooks",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
     "prettier:check": "prettier . --check",
