@@ -1,15 +1,15 @@
-(function() {
+(function () {
   'use strict';
 
   //Store reference to HTML
   var html = document.documentElement;
   var AC = {
-    start: function() {
+    start: function () {
       //Go on and set up website
       AC.setUpSite();
     },
 
-    setUpSite: function() {
+    setUpSite: function () {
       //Set html replace html no-js with js class
       html.className = document.documentElement.className.replace(
         'no-js',
@@ -22,15 +22,15 @@
       AC.initializeContactForm();
     },
 
-    initializeCloseOffCanvasMenu: function() {
+    initializeCloseOffCanvasMenu: function () {
       var button = document.getElementById('offcanvas-close');
-      button.onclick = function(e) {
+      button.onclick = function (e) {
         e.preventDefault();
         AC.closeOffCanvasMenu();
       };
     },
 
-    initializeSmoothScroll: function() {
+    initializeSmoothScroll: function () {
       //https://github.com/cferdinandi/smooth-scroll
       new SmoothScroll('a[data-scroll]', {
         updateURL: false,
@@ -42,18 +42,18 @@
       document.addEventListener('scrollStart', AC.closeOffCanvasMenu, false);
     },
 
-    closeOffCanvasMenu: function(event) {
+    closeOffCanvasMenu: function (event) {
       location.hash = '';
       history.replaceState('', document.title, window.location.pathname);
     },
 
-    initializePlaceholdersFallback: function() {
+    initializePlaceholdersFallback: function () {
       if (!AC.supportsPlaceholders()) {
         html.className += ' no-placeholder';
       }
     },
 
-    supportsPlaceholders: function() {
+    supportsPlaceholders: function () {
       //see: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/forms/placeholder.js
       return (
         'placeholder' in document.createElement('input') &&
@@ -61,7 +61,7 @@
       );
     },
 
-    initializeContactForm: function() {
+    initializeContactForm: function () {
       /*Messages set*/
       var msg = {
           sending: 'Sending...',
@@ -79,20 +79,20 @@
         formSpinner = document.getElementById('form-spinner');
 
       /* on Blur: Validate and return true/false */
-      formName.addEventListener('blur', function() {
+      formName.addEventListener('blur', function () {
         AC.validateField(this);
       });
 
-      formEmail.addEventListener('blur', function() {
+      formEmail.addEventListener('blur', function () {
         AC.validateField(this);
       });
 
-      formMessage.addEventListener('blur', function() {
+      formMessage.addEventListener('blur', function () {
         AC.validateField(this);
       });
 
       /* On form submit... */
-      formSubmit.addEventListener('click', function(e) {
+      formSubmit.addEventListener('click', function (e) {
         //stop the form from being submitted
         e.preventDefault();
 
@@ -129,26 +129,26 @@
             body: JSON.stringify(data),
             method: 'POST',
           })
-            .then(function(response) {
+            .then(function (response) {
               if (!response.ok) {
                 throw response;
               }
             })
-            .then(function() {
+            .then(function () {
               formSubmit.setAttribute('value', msg.thanks);
             })
-            .catch(function(err) {
+            .catch(function (err) {
               formAlert.innerHTML = msg.please_retry;
               formSubmit.setAttribute('value', msg.retry);
             })
-            .finally(function() {
+            .finally(function () {
               formSpinner.style.opacity = 0;
             });
         } // end if Validation
       });
     },
 
-    validateField: function(field) {
+    validateField: function (field) {
       if (field.id === 'email') {
         //Regex again email format
         if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i.test(field.value)) {

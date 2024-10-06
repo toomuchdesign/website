@@ -199,10 +199,10 @@
 // .shifted-color(@color, 15%);
 
 .shifted-color (@color, @strength: 15%) when (lightness(@color) >= 75%) {
-  @shifted-color : mix(#000, @color, @strength);
+  @shifted-color: mix(#000, @color, @strength);
 }
 .shifted-color (@color, @strength: 15%) when (lightness(@color) < 75%) {
-  @shifted-color :mix(#fff, @color, @strength);
+  @shifted-color: mix(#fff, @color, @strength);
 }
 
 /* Set link color and its hover state with an automated shift
@@ -221,10 +221,10 @@
 // .black-or-white(@color, 0%);
 
 .black-or-white (@color, @attenuation: 0%) when (lightness(@color) >= 75%) {
-  @black-or-white : lighten(#000, @attenuation);
+  @black-or-white: lighten(#000, @attenuation);
 }
 .black-or-white (@color, @attenuation: 0%) when (lightness(@color) < 75%) {
-  @black-or-white : darken(#fff, @attenuation);
+  @black-or-white: darken(#fff, @attenuation);
 }
 
 /* Sticky Footer: set style for make a footer stycked to bottom
@@ -251,7 +251,7 @@
  */
 
 .sticky-body (@footer-height: 50px, @footer-top-padding: 0) {
-  @bottom-padding : @footer-height + @footer-top-padding;
+  @bottom-padding: @footer-height + @footer-top-padding;
   margin: 0 0 @bottom-padding;
 }
 
@@ -300,8 +300,8 @@
 }
 
 .gfc-clear-reset() when (@old-columns-number > 1) {
-  @multiplicator : @old-columns-number;
-  @shift : @old-columns-number + 1;
+  @multiplicator: @old-columns-number;
+  @shift: @old-columns-number + 1;
 
   &:nth-child(@{multiplicator}n + @{shift}) {
     clear: none;

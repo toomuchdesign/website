@@ -34,7 +34,7 @@ ${message}
 andreacarraro.it | ${senderEmail}`;
 }
 
-exports.handler = function(event, context, callback) {
+exports.handler = function (event, context, callback) {
   if (event.httpMethod !== 'POST') {
     return {statusCode: 405, body: 'Method Not Allowed'};
   }
@@ -78,5 +78,5 @@ exports.handler = function(event, context, callback) {
 
   Promise.all([emailToUser, emailToAdmin])
     .then(([emailUserResponse]) => callback(null, emailUserResponse))
-    .catch(errors => callback(errors, null));
+    .catch((errors) => callback(errors, null));
 };

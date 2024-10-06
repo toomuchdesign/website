@@ -1,6 +1,6 @@
 const mozjpeg = require('imagemin-mozjpeg');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   'use strict';
 
   // configure the tasks
