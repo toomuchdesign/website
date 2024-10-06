@@ -6,9 +6,9 @@
   "homepage": "http://www.andreacarraro.it",
   "version": "1.0.0",
   "scripts": {
-    "start": "netlify dev",
+    "start": "npx netlify dev",
     "start:page": "grunt sync",
-    "build": "netlify build",
+    "build": "npx netlify build",
     "build:page": "grunt build",
     "prepare": "npx simple-git-hooks && npm run build",
     "version": "git add package.json",
