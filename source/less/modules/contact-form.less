@@ -1,10 +1,10 @@
 .contact-form {
-  margin: 0 -@global-gutter--small / 2;
+  margin: 0 (-@global-gutter--small / 2);
 
   &__element {
     position: relative;
-    padding: @global-gutter--small @global-gutter--small / 2 0
-      @global-gutter--small / 2;
+    padding: @global-gutter--small (@global-gutter--small / 2) 0
+      (@global-gutter--small / 2);
     display: block;
     clear: both;
 
@@ -33,7 +33,7 @@
   &__error {
     position: absolute;
     bottom: @global-gutter--small;
-    right: @global-gutter--small / 2 + 10px;
+    right: (@global-gutter--small / 2) + 10px;
 
     opacity: 0;
     transition: opacity 0.25s ease;

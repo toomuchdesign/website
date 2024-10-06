@@ -146,15 +146,6 @@ module.exports = function (grunt) {
       },
     }, //end less
 
-    postcss: {
-      options: {
-        processors: [require('autoprefixer')()],
-      },
-      stylesheets: {
-        src: '<%= settings.build %>/css/style.css',
-      },
-    },
-
     uglify: {
       options: {
         sourceMap: true,
@@ -280,7 +271,6 @@ module.exports = function (grunt) {
   grunt.registerTask('build_stylesheets', 'Build Stylesheets.', [
     'clean:stylesheets',
     'less:stylesheets',
-    'postcss:stylesheets',
   ]);
 
   grunt.registerTask('build_javascript', 'Build Javascript.', [
