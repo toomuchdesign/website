@@ -7,7 +7,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     //Import settings
     settings: {
-      source: 'source',
+      source: 'src',
       build: 'build',
       static_files_pattern: [
         'cv/**',
