@@ -4,13 +4,10 @@ www.andreacarraro.it
 
 ## Setup
 
-### Install dependencies
+Link the project to Netlify account with [netflify cli](https://docs.netlify.com/cli/get-started/):
 
-Run:
-
-```
-npm i && npm i netlify-cli -g
-```
+- `npm netlify login`
+- `npm netlify link`
 
 ### .env file
 

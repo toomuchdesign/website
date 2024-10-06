@@ -9,13 +9,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "spinner",
-          "loading",
-          "loading-wheel",
-          "busy",
-          "wait"
-        ],
+        "tags": ["spinner", "loading", "loading-wheel", "busy", "wait"],
         "defaultCode": 60198,
         "grid": 16
       },
@@ -41,13 +35,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "link",
-          "chain",
-          "url",
-          "uri",
-          "anchor"
-        ],
+        "tags": ["link", "chain", "url", "uri", "anchor"],
         "defaultCode": 58061,
         "grid": 16
       },
@@ -72,12 +60,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "point-right",
-          "finger",
-          "direction",
-          "hand"
-        ],
+        "tags": ["point-right", "finger", "direction", "hand"],
         "defaultCode": 58171,
         "grid": 16
       },
@@ -102,11 +85,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "plus",
-          "add",
-          "sum"
-        ],
+        "tags": ["plus", "add", "sum"],
         "defaultCode": 58230,
         "grid": 16
       },
@@ -131,12 +110,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "minus",
-          "subtract",
-          "minimize",
-          "line"
-        ],
+        "tags": ["minus", "subtract", "minimize", "line"],
         "defaultCode": 58229,
         "grid": 16
       },
@@ -161,13 +135,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "cross",
-          "cancel",
-          "close",
-          "quit",
-          "remove"
-        ],
+        "tags": ["cross", "cancel", "close", "quit", "remove"],
         "defaultCode": 58219,
         "grid": 16
       },
@@ -193,12 +161,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "circle-down",
-          "down",
-          "circle-bottom",
-          "arrow"
-        ],
+        "tags": ["circle-down", "down", "circle-bottom", "arrow"],
         "defaultCode": 58883,
         "grid": 16
       },
@@ -257,11 +220,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "facebook",
-          "brand",
-          "social"
-        ],
+        "tags": ["facebook", "brand", "social"],
         "defaultCode": 58523,
         "grid": 16
       },
@@ -286,11 +245,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "twitter",
-          "brand",
-          "social"
-        ],
+        "tags": ["twitter", "brand", "social"],
         "defaultCode": 58527,
         "grid": 16
       },
@@ -320,11 +275,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "youtube",
-          "brand",
-          "social"
-        ],
+        "tags": ["youtube", "brand", "social"],
         "defaultCode": 61171,
         "grid": 16
       },
@@ -349,12 +300,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "github",
-          "brand",
-          "octacat",
-          "social"
-        ],
+        "tags": ["github", "brand", "octacat", "social"],
         "defaultCode": 61195,
         "grid": 16
       },
@@ -379,11 +325,7 @@
         "attrs": [],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "tags": [
-          "linkedin",
-          "brand",
-          "social"
-        ],
+        "tags": ["linkedin", "brand", "social"],
         "defaultCode": 58575,
         "grid": 16
       },
@@ -405,11 +347,7 @@
         "paths": [
           "M1024 640v384h-1024v-384h128v256h768v-256zM192 704h640v128h-640zM207.152 565.466l27.698-124.964 624.832 138.496-27.698 124.964zM279.658 308.558l54.092-116.006 580.032 270.464-54.092 116.006zM991.722 361.476l-77.922 101.55-507.746-389.608 56.336-73.418h58.244z"
         ],
-        "tags": [
-          "stackoverflow",
-          "brand",
-          "social"
-        ],
+        "tags": ["stackoverflow", "brand", "social"],
         "defaultCode": 60112,
         "grid": 16,
         "attrs": []

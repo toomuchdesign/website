@@ -14,3 +14,6 @@ node_modules
 # Build folders
 lambda
 build
+
+# Local Netlify folder
+.netlify

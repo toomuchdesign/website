@@ -6,56 +6,45 @@
   "homepage": "http://www.andreacarraro.it",
   "version": "1.0.0",
   "scripts": {
-    "start": "netlify dev",
+    "start": "npx netlify dev",
     "start:page": "grunt sync",
-    "build": "npm run build:page && npm run build:functions",
+    "build": "npx netlify build",
     "build:page": "grunt build",
-    "build:functions": "netlify-lambda build functions",
-    "preversion": "npm test",
+    "prepare": "npx simple-git-hooks && npm run build",
     "version": "git add package.json",
     "postversion": "git push && git push --tags",
-    "format": "prettier --write \"**/*.{js,html,css,less,md}\""
+    "prettier:check": "prettier . --check",
+    "prettier:fix": "npm run prettier:check -- --write",
+    "source:check": "npm run prettier:check"
   },
-  "engine": "node >= 12",
+  "simple-git-hooks": {
+    "pre-commit": "npm run source:check"
+  },
   "dependencies": {
-    "@sendgrid/mail": "^7.4.0",
-    "autoprefixer": "^9.6.1",
+    "@netlify/functions": "^2.8.2",
+    "@sendgrid/mail": "^8.1.3",
     "email-validator": "^2.0.4",
-    "grunt": "^1.0.4",
+    "grunt": "^1.6.1",
     "grunt-browser-sync": "^2.1.3",
-    "grunt-cli": "^1.3.2",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-concat": "^1.0.1",
+    "grunt-cli": "^1.5.0",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-concat": "^2.1.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-imagemin": "^3.1.0",
-    "grunt-contrib-less": "^2.0.0",
-    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-imagemin": "^4.0.0",
+    "grunt-contrib-less": "^3.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-newer": "^1.3.0",
-    "grunt-postcss": "^0.9.0",
-    "imagemin-mozjpeg": "^8.0.0",
-    "lazysizes": "^5.1.0",
-    "load-grunt-tasks": "^5.0.0",
-    "netlify-cli": "^2.68.0",
-    "netlify-lambda": "^2.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "lazysizes": "^5.3.2",
+    "load-grunt-tasks": "^5.1.0",
+    "netlify-cli": "^17.36.4",
     "normalize.css": "^8.0.1",
-    "smooth-scroll": "^16.1.0"
+    "smooth-scroll": "^16.1.3"
   },
   "devDependencies": {
-    "husky": "^3.0.0",
-    "lint-staged": "^9.0.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.18.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,html,css,less,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "@types/node": "^22.7.4",
+    "prettier": "^3.3.3",
+    "simple-git-hooks": "^2.11.1"
   }
 }
